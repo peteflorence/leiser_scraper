@@ -14,12 +14,13 @@ game_ids_have = sorted(game_ids_have)
 
 print game_ids_have
 
-MAX_NUM_NEW_GAMES = 20
+MAX_NUM_NEW_GAMES = 10
 
 next_game_id = str(int(game_ids_have[-1]) + 1)
 
 for i in range(MAX_NUM_NEW_GAMES):
 	# scrape one more than the current highest game we have
+	time.sleep(1 + random.random()*0.1)
 	os.system("python " +os.getcwd()+"/game_scraper.py " + next_game_id)
 	next_game_id = str(int(next_game_id) + 1)
 
