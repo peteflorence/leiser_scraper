@@ -2,7 +2,7 @@ import dryscrape
 from bs4 import BeautifulSoup
 import os
 
-game_id = 690213
+game_id = 690214
 
 session = dryscrape.Session()
 session.visit("http://scrimmage.csail.mit.edu/watch_game?gameid=" + str(game_id))

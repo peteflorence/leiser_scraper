@@ -5,8 +5,11 @@ import time
 import random
 
 # read in all games
-print os.listdir('.')
+d = './game_data/'
+game_ids_have = [os.path.join(d, o) for o in os.listdir(d) 
+                    if os.path.isdir(os.path.join(d,o))]
 
+print game_ids_have
 quit()
 
 # scrape currently listed games

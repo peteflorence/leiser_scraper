@@ -1,6 +1,6 @@
 import os
 
-game_id = 690213
+game_id = 690214
 
 filename = "game_data/"+str(game_id)+"/page.html"
 

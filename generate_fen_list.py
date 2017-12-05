@@ -5,7 +5,7 @@ from subprocess import Popen, PIPE
 # Kill any currently-running leiserchess binaries
 os.system("killall leiserchess")
 
-game_id = 690213
+game_id = 690214
 move_list_filename = "game_data/"+str(game_id)+"/move_list.txt"
 
 fw = open("tmpout", "w")
