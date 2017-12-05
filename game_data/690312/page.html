@@ -1,0 +1,2186 @@
+<!DOCTYPE html><html lang="en"><head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" type="text/css" href="static/css/main.css">
+
+     <script async="" src="//rum-static.pingdom.net/prum.min.js"></script><script type="text/javascript" src="static/js/smoothie.js"></script>
+
+<script>
+var _prum = [['id', '52955a05abe53d7e3a000000'],
+             ['mark', 'firstbyte', (new Date()).getTime()]];
+(function() {
+    var s = document.getElementsByTagName('script')[0]
+      , p = document.createElement('script');
+    p.async = 'async';
+    p.src = '//rum-static.pingdom.net/prum.min.js';
+    s.parentNode.insertBefore(p, s);
+})();
+</script>
+
+
+  <script type="text/javascript" src="static/js/jquery-1.8.2.min.js"></script>
+  <script type="text/javascript" src="static/js/jquery.transit.js" charset="utf-8"></script>
+  <script type="text/javascript">
+  watch_game_id = 690312; 
+  window.replay_game_iter = -1;
+  </script>
+  <script type="text/javascript" src="static/js/tournament_gui.js"></script>
+  <script type="text/javascript" src="static/js/board.js"></script>
+
+  <title>Leiserchess</title>
+</head>
+<body>
+  <input id="replay_game_iter" name="replay_game_iter" value="-1" type="hidden">
+  <div id="global-wrapper">
+    <div id="global-t">
+      <div id="control">
+        <div id="turn-indicator" class="whiteturn whiteturnactive">TANGERINE's turn</div>
+        <div id="players">
+          <div id="white-player" class="whiteturn whiteturnactive"><div id="white-player-text"><div>white</div></div></div>
+          <div id="black-player" class="blackturn"><div id="black-player-text"><div>black</div></div></div>
+        </div>
+        <div id="board-history">
+          <div id="move-no"><div>1.&nbsp;</div><div>2.&nbsp;</div><div>3.&nbsp;</div><div>4.&nbsp;</div><div>5.&nbsp;</div><div>6.&nbsp;</div><div>7.&nbsp;</div><div>8.&nbsp;</div><div>9.&nbsp;</div><div>10.&nbsp;</div><div>11.&nbsp;</div><div>12.&nbsp;</div><div>13.&nbsp;</div><div>14.&nbsp;</div><div>15.&nbsp;</div><div>16.&nbsp;</div><div>17.&nbsp;</div><div>18.&nbsp;</div><div>19.&nbsp;</div><div>20.&nbsp;</div><div>21.&nbsp;</div><div>22.&nbsp;</div><div>23.&nbsp;</div><div>24.&nbsp;</div><div>25.&nbsp;</div><div>26.&nbsp;</div><div>27.&nbsp;</div><div>28.&nbsp;</div><div>29.&nbsp;</div><div>30.&nbsp;</div><div>31.&nbsp;</div><div>32.&nbsp;</div><div>33.&nbsp;</div><div>34.&nbsp;</div><div>35.&nbsp;</div><div>36.&nbsp;</div><div>37.&nbsp;</div><div>38.&nbsp;</div><div>39.&nbsp;</div><div>40.&nbsp;</div></div>
+          <div id="black-move"><div>h4h5</div><div>h5h6</div><div>g3R</div><div>h6h7</div><div>f2e3</div><div>e1U</div><div>d2L</div><div>e3d4</div><div>d4e5</div><div>h0g0</div><div>g0f1</div><div>g3f3</div><div>f1g1</div><div>d2e3</div><div>e5f6</div><div>d0c1</div><div>c1b2</div><div>b2U</div><div>e3f2</div><div>f4e3</div><div>e3d4</div><div>f2f1</div><div>f1L</div><div>f1g1</div><div>d4e5</div><div>f6f7</div><div>e5e6</div><div>g1L</div><div>e6e7</div><div>e7e6</div><div>e6e5</div><div>f1g1</div><div>e5f5</div><div>f1f2</div><div>e1L</div><div>e3f3</div><div>e1f1</div><div>f7f6</div><div>g1h1</div><div>e1U</div></div>
+          <div id="white-move"><div>b4R</div><div>d6U</div><div>a3b2</div><div>e7U</div><div>b2R</div><div>c5d4</div><div>c3R</div><div>e3f2</div><div>b4a5</div><div>a5a4</div><div>a4a5</div><div>a5b5</div><div>d4e5</div><div>e5f4</div><div>f4f3</div><div>f3f2</div><div>c1b1</div><div>b1a0</div><div>e3e2</div><div>c3b4</div><div>e2f1</div><div>a0a1</div><div>a1b2</div><div>e7d7</div><div>a1L</div><div>b2b1</div><div>d7c7</div><div>b4b3</div><div>d6d5</div><div>b1a0</div><div>b5b6</div><div>d5d4</div><div>c7d7</div><div>d4e3</div><div>e3f2</div><div>f2f1</div><div>e1U</div><div>e1f1</div><div>f1g0</div><div>g0h1</div></div>
+        </div>
+        <h1>Leiserchess Livestream</h1>
+        <div id="link-block">
+          <div><a href="/scrimmage" style="font-size:16pt; font-weight:bold;">Scrimmage Portal</a></div>
+          <!--<div><a href="http://leiserchess.csail.mit.edu/Leiserchess.html" class="biglink" target="_blank">How to Play</a></div>-->
+          <div><a href="replay_game?gameid=690312&amp;move=1" style="font-size:16pt; font-weight:bold;">Replay Game</a></div>
+        </div>
+        <div id="warning-block">
+          <div id="warning" visible="false">
+            <span>⚠</span>
+            <span id="warning-message">Your move is invalid</span>
+          </div>
+        </div>
+      </div>
+      <div id="board-wrapper">
+        <div id="board-parent">
+          <canvas id="cboard" width="500" height="500" style="z-index:-1"></canvas>
+        <canvas height="500" width="500" style="position: absolute; z-index: 100; top: 3px; left: 243px;" id="laserCanvas"></canvas><img src="/static/images/king-black.png" id="piece-32" width="62" height="62" class="piece" style="top: 2px; left: 242px; -webkit-transform: rotate(180deg);"><img src="/static/images/pawn-black.png" id="piece-33" width="62" height="62" class="piece" style="top: 2px; left: 429.5px; -webkit-transform: rotate(180deg);"><img src="/static/images/pawn-black.png" id="piece-37" width="62" height="62" class="piece" style="top: 64.5px; left: 304.5px; -webkit-transform: rotate(90deg);"><img src="/static/images/pawn-white.png" id="piece-38" width="62" height="62" class="piece" style="top: 64.5px; left: 554.5px; -webkit-transform: rotate(180deg);"><img src="/static/images/pawn-white.png" id="piece-42" width="62" height="62" class="piece" style="top: 127px; left: 554.5px; -webkit-transform: rotate(270deg);"><img src="/static/images/pawn-black.png" id="piece-41" width="62" height="62" class="piece" style="top: 252px; left: 304.5px; -webkit-transform: rotate(90deg);"><img src="/static/images/pawn-white.png" id="piece-43" width="62" height="62" class="piece" style="top: 252px; left: 554.5px; -webkit-transform: rotate(270deg);"><img src="/static/images/pawn-white.png" id="piece-45" width="62" height="62" class="piece" style="top: 377px; left: 492px; -webkit-transform: rotate(90deg);"><img src="/static/images/pawn-black.png" id="piece-34" width="62" height="62" class="piece" style="top: 377px; left: 679.5px; -webkit-transform: rotate(0deg);"><img src="/static/images/pawn-black.png" id="piece-40" width="62" height="62" class="piece" style="top: 439.5px; left: 242px; -webkit-transform: rotate(90deg);"><img src="/static/images/king-white.png" id="piece-47" width="62" height="62" class="piece" style="top: 439.5px; left: 617px; -webkit-transform: rotate(0deg);"></div>
+      <div class="board-label" style="top: 20px; left: 220px;">7</div><div class="board-label" style="top: 82.5px; left: 220px;">6</div><div class="board-label" style="top: 145px; left: 220px;">5</div><div class="board-label" style="top: 207.5px; left: 220px;">4</div><div class="board-label" style="top: 270px; left: 220px;">3</div><div class="board-label" style="top: 332.5px; left: 220px;">2</div><div class="board-label" style="top: 395px; left: 220px;">1</div><div class="board-label" style="top: 457.5px; left: 220px;">0</div><div class="board-label" style="top: 510px; left: 260px;">a</div><div class="board-label" style="top: 510px; left: 322.5px;">b</div><div class="board-label" style="top: 510px; left: 385px;">c</div><div class="board-label" style="top: 510px; left: 447.5px;">d</div><div class="board-label" style="top: 510px; left: 510px;">e</div><div class="board-label" style="top: 510px; left: 572.5px;">f</div><div class="board-label" style="top: 510px; left: 635px;">g</div><div class="board-label" style="top: 510px; left: 697.5px;">h</div></div>
+      <div id="edit-rep">
+      </div>
+      <div id="bottom-block" style="text-align:center; font-size:14pt;">
+<div style="width:500px;">
+
+
+      <div style="color:#CD6721; font-weight:bold;">cunqueim.parallelx</div> <div style="font-weight:bold;">vs</div> <div style="color:#9C3AF5; font-weight:bold;">cunqueim.testing</div>
+
+
+<fieldset>
+<legend>Depth Searched (GMean Last 10 Moves)</legend>
+    <canvas id="chart" width="400" height="100"></canvas>
+</fieldset>
+
+
+      </div>
+
+<div style="width:500px; text-align:left; position:relative; left:150px; height:50px;">
+<div style="text-decoration:underline; position:relative; left:40px;">Search Scores</div>
+      <div id="player1_score" style="color:#CD6721; font-weight:bold; width:100px; text-align:center; float:left;">NA</div> <div id="player2_score" style="color:#9C3AF5; font-weight:bold; width:100px; text-align:center; float:left;">NA</div>
+</div>
+
+
+
+</div>
+      <div id="bottom-block-bak" style="display:none;">
+        <div>
+          <select id="game-list" name="game-list" size="6"></select>
+        </div>
+        <div id="fen-rep-hist-block" class="fen-rep-block">
+          <div id="fen-rep-hist-label" class="fen-rep-label">History: </div>
+          <div id="fen-rep-hist" class="fen-rep">startpos#h4h5#b4R#h5h6#d6U#g3R#a3b2#h6h7#e7U#f2e3#b2R#e1U#c5d4#d2L#c3R#e3d4#e3f2#d4e5#b4a5#h0g0#a5a4#g0f1#a4a5#g3f3#a5b5#f1g1#d4e5#d2e3#e5f4#e5f6#f4f3#d0c1#f3f2#c1b2#c1b1#b2U#b1a0#e3f2#e3e2#f4e3#c3b4#e3d4#e2f1#f2f1#a0a1#f1L#a1b2#f1g1#e7d7#d4e5#a1L#f6f7#b2b1#e5e6#d7c7#g1L#b4b3#e6e7#d6d5#e7e6#b1a0#e6e5#b5b6#f1g1#d5d4#e5f5#c7d7#f1f2#d4e3#e1L#e3f2#e3f3#f2f1#e1f1#e1U#f7f6#e1f1#g1h1#f1g0#e1U#g0h1</div>
+        </div>
+      </div>
+    </div>
+    <div id="monitors">
+      <div id="monitor-white">/scratch/6172_game_server/games/game_690312<br>
+cunqueim.parallelx<br>
+/scratch/6172_game_server/games/game_690312<br>
+<br>
+BOL5672<br>
+mid:S<br>
+id name Leiserchess version 1038<br>
+id author Don Dailey, Charles E. Leiserson, and the staff of MIT 6.172<br>
+option name hattack type spin value 900 default 900 min 0 max 10000<br>
+option name mobility type spin value 400 default 400 min 0 max 10000<br>
+option name kaggressive type spin value 26000 default 26000 min 0 max 30000<br>
+option name kface type spin value 5000 default 5000 min 0 max 10000<br>
+option name pawnpin type spin value 4000 default 4000 min 0 max 10000<br>
+option name pbetween type spin value 2000 default 2000 min -10000 max 10000<br>
+option name pcentral type spin value 500 default 500 min -10000 max 10000<br>
+option name hash type spin value 16 default 16 min 1 max 4096<br>
+option name draw type spin value -7 default -7 min -100 max 100<br>
+option name randomize type spin value 0 default 0 min 0 max 10000<br>
+option name reset_rng type spin value 0 default 0 min 0 max 1<br>
+option name lmr_r1 type spin value 5 default 5 min 1 max 256<br>
+option name lmr_r2 type spin value 20 default 20 min 1 max 256<br>
+option name hmb type spin value 3 default 3 min 0 max 100<br>
+option name fut_depth type spin value 3 default 3 min 0 max 5<br>
+option name use_nmm type spin value 1 default 1 min 0 max 1<br>
+option name detect_draws type spin value 1 default 1 min 0 max 1<br>
+option name use_tt type spin value 1 default 1 min 0 max 1<br>
+option name use_ko type spin value 1 default 1 min 0 max 1<br>
+option name trace_moves type spin value 0 default 0 min 0 max 1<br>
+uciok<br>
+readyok<br>
+<span class="dark">info</span> depth 1 move_no 1 time (microsec) 52 nodes 79 nps 1491607<br>
+info score cp -3 pv d0d1<br>
+info depth 1 move_no 56 time (microsec) 132 nodes 212 nps 1605464<br>
+info score cp 15 pv h4g5<br>
+info depth 2 move_no 1 time (microsec) 311 nodes 718 nps 2308451<br>
+info score cp 3 pv h4g5 a3b3<br>
+info depth 3 move_no 1 time (microsec) 3214 nodes 14858 nps 4622741<br>
+info score cp -2 pv h4g5 a3b3 f2e3<br>
+info depth 3 move_no 23 time (microsec) 6292 nodes 26485 nps 4208817<br>
+info score cp 5 pv h4h5 b4R h5h6<br>
+info depth 3 move_no 42 time (microsec) 8998 nodes 36904 nps 4100951<br>
+info score cp 15 pv g3R b4R h4g5<br>
+info depth 4 move_no 1 time (microsec) 14022 nodes 50191 nps 3579339<br>
+info score cp 3 pv g3R b4R h4g5 a3b3<br>
+info depth 4 move_no 3 time (microsec) 25308 nodes 93674 nps 3701277<br>
+info score cp 13 pv h4g5 a3a2 g3R a2a1<br>
+info depth 5 move_no 1 time (microsec) 115025 nodes 509055 nps 4425565<br>
+info score cp 8 pv h4g5 a3a2 g3R a2a1 e1e2<br>
+info depth 6 move_no 1 time (microsec) 186783 nodes 777069 nps 4160266<br>
+info score cp 4 pv h4g5 a3a2 g3R a2a1 e1U a1a0<br>
+info depth 6 move_no 3 time (microsec) 296375 nodes 1206625 nps 4071264<br>
+info score cp 13 pv h4h5 b4R h5g6 d6U g6R a7b6 g6h7 a3b2<br>
+info depth 7 move_no 1 time (microsec) 744868 nodes 2981703 nps 4002991<br>
+info score cp 12 pv h4h5 b4R h5h6 a7L g3R d6L h0g1 d6d7 h6g5<br>
+<span class="dark">bestmove</span> h4h5<br>
+info depth 1 move_no 1 time (microsec) 74 nodes 261 nps 3487486<br>
+info score cp -196 pv e1R b4a4<br>
+info depth 1 move_no 3 time (microsec) 198 nodes 686 nps 3461499<br>
+info score cp -195 pv g3f3 b4a4<br>
+info depth 1 move_no 8 time (microsec) 324 nodes 1105 nps 3405847<br>
+info score cp -3 pv f4e3<br>
+info depth 1 move_no 55 time (microsec) 439 nodes 1427 nps 3243358<br>
+info score cp 5 pv h5h6<br>
+info depth 2 move_no 1 time (microsec) 650 nodes 2043 nps 3141197<br>
+info score cp 3 pv h5h6 b4a5<br>
+info depth 3 move_no 1 time (microsec) 2054 nodes 7896 nps 3843216<br>
+info score cp 5 pv h5h6 b4a5 h6h7<br>
+info depth 4 move_no 1 time (microsec) 4471 nodes 14553 nps 3254525<br>
+info score cp 11 pv h5h6 b4a5 h6h7 e7R<br>
+info depth 5 move_no 1 time (microsec) 27270 nodes 91594 nps 3358746<br>
+info score cp 12 pv h5h6 a7L g3R d6L h0g1 d6d7 h6g5<br>
+info depth 6 move_no 1 time (microsec) 200384 nodes 761956 nps 3802472<br>
+info score cp 2 pv h5h6 d6U h6h7 e7R g3R a3b3<br>
+info depth 7 move_no 1 time (microsec) 790843 nodes 2859741 nps 3616064<br>
+info score cp -3 pv h5h6 d6U h6h7 e7R g3R a3b3 h7g6<br>
+bestmove h5h6<br>
+info depth 1 move_no 1 time (microsec) 60 nodes 213 nps 3520893<br>
+info score cp -187 pv g3U b4a4<br>
+info depth 1 move_no 9 time (microsec) 192 nodes 639 nps 3318256<br>
+info score cp -186 pv d2d3 b4a4<br>
+info depth 1 move_no 13 time (microsec) 262 nodes 854 nps 3254982<br>
+info score cp 6 pv f4e3<br>
+info depth 1 move_no 73 time (microsec) 404 nodes 1281 nps 3165722<br>
+info score cp 13 pv h6h7<br>
+info depth 2 move_no 1 time (microsec) 663 nodes 1846 nps 2784053<br>
+info score cp 13 pv h6h7 a7b6 h7R a3b3<br>
+info depth 3 move_no 1 time (microsec) 5460 nodes 19970 nps 3657351<br>
+info score cp 12 pv h6h7 a7a6 f2e3<br>
+info depth 4 move_no 1 time (microsec) 9989 nodes 34143 nps 3418040<br>
+info score cp -2 pv h6h7 a7a6 f2e3 e7f6<br>
+info depth 5 move_no 1 time (microsec) 46535 nodes 167133 nps 3591499<br>
+info score cp -3 pv h6h7 e7U g3R a3b3 h7g6<br>
+info depth 6 move_no 1 time (microsec) 133869 nodes 466752 nps 3486607<br>
+info score cp 0 pv h6h7 e7U g3R c5d4 f4U a3b3<br>
+info depth 6 move_no 44 time (microsec) 550902 nodes 1876556 nps 3406331<br>
+info score cp 2 pv g3R a3b3 f4e3 e5e4 h6h7 e7d6<br>
+info depth 7 move_no 1 time (microsec) 1212514 nodes 4339375 nps 3578823<br>
+info score cp -3 pv g3R a3b3 f4e3 e5e4 h6h7 e7d6 h7g6<br>
+bestmove g3R<br>
+info depth 1 move_no 1 time (microsec) 86 nodes 215 nps 2473738<br>
+info score cp -14 pv e1f0<br>
+info depth 1 move_no 3 time (microsec) 150 nodes 301 nps 2003341<br>
+info score cp -3 pv h6g6<br>
+info depth 2 move_no 1 time (microsec) 658 nodes 2031 nps 3082686<br>
+info score cp 2 pv h6g6 e7f6<br>
+info depth 3 move_no 1 time (microsec) 5035 nodes 18058 nps 3586316<br>
+info score cp -3 pv h6g6 e7f6 g6g5<br>
+info depth 4 move_no 1 time (microsec) 19896 nodes 53200 nps 2673833<br>
+info score cp 0 pv h6g6 e7f6 g6g5 a7a6<br>
+info depth 4 move_no 35 time (microsec) 101624 nodes 326533 nps 3213135<br>
+info score cp 1 pv h6g5 a7a6 f2e3 e7e6<br>
+info depth 4 move_no 67 time (microsec) 136021 nodes 454229 nps 3339385<br>
+info score cp 2 pv h6h7 d6e7 h7g6 e5d4<br>
+info depth 5 move_no 1 time (microsec) 165955 nodes 556307 nps 3352141<br>
+info score cp -3 pv h6h7 d6e7 h7g6 e5d4 f4e3<br>
+info depth 6 move_no 1 time (microsec) 350642 nodes 1125543 nps 3209945<br>
+info score cp 0 pv h6h7 d6e7 h7g6 a7a6 f4e3 e7f6<br>
+bestmove h6h7<br>
+info depth 1 move_no 1 time (microsec) 84 nodes 209 nps 2459662<br>
+info score cp -5 pv e1f0<br>
+info depth 1 move_no 4 time (microsec) 147 nodes 296 nps 2006208<br>
+info score cp -4 pv f2f3<br>
+info depth 1 move_no 10 time (microsec) 210 nodes 387 nps 1834662<br>
+info score cp -3 pv h7g6<br>
+info depth 2 move_no 1 time (microsec) 699 nodes 2147 nps 3069730<br>
+info score cp 2 pv h7g6 e7f6<br>
+info depth 3 move_no 1 time (microsec) 2990 nodes 9571 nps 3200245<br>
+info score cp -3 pv h7g6 e7f6 g6g5<br>
+info depth 4 move_no 1 time (microsec) 18148 nodes 47069 nps 2593491<br>
+info score cp 0 pv h7g6 e7f6 g6g5 a7a6<br>
+info depth 5 move_no 1 time (microsec) 256315 nodes 920739 nps 3592212<br>
+info score cp -49 pv h7g6 b2R e1U b2a1 d0e1 e7e6<br>
+info depth 5 move_no 6 time (microsec) 467218 nodes 1675947 nps 3587072<br>
+info score cp -7 pv f2g2 c5d4 g3h4 b2R g2R<br>
+info depth 5 move_no 11 time (microsec) 716092 nodes 2538048 nps 3544300<br>
+info score cp -4 pv f2e3 a7a6 h7g6 e7f6 g6f5<br>
+bestmove f2e3<br>
+info depth 1 move_no 1 time (microsec) 50 nodes 149 nps 2955469<br>
+info score cp -211 pv h7g7 b2a1<br>
+info depth 1 move_no 13 time (microsec) 435 nodes 1126 nps 2584975<br>
+info score cp -3 pv e1U<br>
+info depth 2 move_no 1 time (microsec) 711 nodes 2011 nps 2827488<br>
+info score cp 0 pv e1U a7a6<br>
+info depth 3 move_no 1 time (microsec) 2589 nodes 8096 nps 3126372<br>
+info score cp -4 pv e1U c5d4 e3d4<br>
+info depth 4 move_no 1 time (microsec) 21165 nodes 58007 nps 2740637<br>
+info score cp -17 pv e1U c5U e3e4 b4a5 e4d4<br>
+info depth 5 move_no 1 time (microsec) 249603 nodes 847640 nps 3395940<br>
+info score cp -51 pv e1U c5d4 e3d4 b2a1 d0U e1U d2e2<br>
+info depth 6 move_no 1 time (microsec) 685592 nodes 2160404 nps 3151149<br>
+info score cp -23 pv e1U c5d4 d2L a7a6 g3h4 e7f6<br>
+bestmove e1U<br>
+info depth 1 move_no 1 time (microsec) 58 nodes 184 nps 3168971<br>
+info score cp -176 pv e1L b4a5<br>
+info depth 1 move_no 13 time (microsec) 344 nodes 1130 nps 3278640<br>
+info score cp -5 pv g3h4<br>
+info depth 1 move_no 68 time (microsec) 1125 nodes 3731 nps 3313578<br>
+info score cp -4 pv e3d4<br>
+info depth 2 move_no 1 time (microsec) 1370 nodes 4349 nps 3172824<br>
+info score cp -45 pv e3d4 b2a1 d0U e1U<br>
+info depth 3 move_no 1 time (microsec) 5149 nodes 17544 nps 3407128<br>
+info score cp -51 pv e3d4 b2a1 d0U e1U d2e2<br>
+info depth 4 move_no 1 time (microsec) 16453 nodes 53949 nps 3278895<br>
+info score cp -46 pv e3d4 b2a1 d0U e1U d2d3 c3d3<br>
+info depth 4 move_no 70 time (microsec) 64484 nodes 205178 nps 3181829<br>
+info score cp -23 pv d2L a7a6 g3h4 e7f6<br>
+info depth 5 move_no 1 time (microsec) 573265 nodes 1786116 nps 3115685<br>
+info score cp -51 pv d2L c3R e3d4 b2a1 d0U e1R d2d3<br>
+bestmove d2L<br>
+info depth 1 move_no 1 time (microsec) 51 nodes 114 nps 2233673<br>
+info score cp -166 pv h7U<br>
+info depth 1 move_no 23 time (microsec) 821 nodes 2464 nps 2999939<br>
+info score cp -5 pv g3h4<br>
+info depth 1 move_no 28 time (microsec) 1015 nodes 2911 nps 2866164<br>
+info score cp -4 pv e3d4<br>
+info depth 2 move_no 1 time (microsec) 1673 nodes 4940 nps 2951918<br>
+info score cp -45 pv e3d4 b2a1 d0U e1R<br>
+info depth 3 move_no 1 time (microsec) 9666 nodes 31012 nps 3208245<br>
+info score cp -51 pv e3d4 b2a1 d0U e1R d2d3<br>
+info depth 4 move_no 1 time (microsec) 27673 nodes 79636 nps 2877714<br>
+info score cp -46 pv e3d4 b2a1 d0U e1R d2d3 c3d4<br>
+info depth 5 move_no 1 time (microsec) 431692 nodes 1402944 nps 3249870<br>
+info score cp -60 pv e3d4 e3f2 d4e5 b4a5 h0g0 a5a4 g0f1<br>
+info depth 6 move_no 1 time (microsec) 1258865 nodes 4108225 nps 3263434<br>
+info score cp -58 pv e3d4 e3f2 d4e5 b4a4 g3g4 d6e5<br>
+bestmove e3d4<br>
+info depth 1 move_no 1 time (microsec) 80 nodes 187 nps 2330334<br>
+info score cp -176 pv d2c2 b4a5<br>
+info depth 1 move_no 2 time (microsec) 178 nodes 404 nps 2262392<br>
+info score cp -175 pv d0e0 b4a5<br>
+info depth 1 move_no 10 time (microsec) 416 nodes 1149 nps 2760254<br>
+info score cp -171 pv d4e5 b4a5<br>
+info depth 1 move_no 12 time (microsec) 506 nodes 1398 nps 2760031<br>
+info score cp -96 pv g3g4 b2a1<br>
+info depth 1 move_no 25 time (microsec) 841 nodes 2511 nps 2982674<br>
+info score cp -11 pv h7h6<br>
+info depth 1 move_no 48 time (microsec) 1437 nodes 4448 nps 3094799<br>
+info score cp -3 pv h7g6<br>
+info depth 2 move_no 1 time (microsec) 1877 nodes 5746 nps 3060738<br>
+info score cp -13 pv h7g6 b4a5<br>
+info depth 3 move_no 1 time (microsec) 11379 nodes 39116 nps 3437322<br>
+info score cp -174 pv h7g6 f2g3 h0g0 a7b7 g6f5<br>
+info depth 3 move_no 2 time (microsec) 16610 nodes 55951 nps 3368498<br>
+info score cp -170 pv h7h6 e5d4 h6g7 b4a5<br>
+info depth 3 move_no 4 time (microsec) 23080 nodes 75162 nps 3256488<br>
+info score cp -60 pv d4e5 b4a5 h0g0 a5a4 g0f1<br>
+info depth 4 move_no 1 time (microsec) 36479 nodes 115275 nps 3160035<br>
+info score cp -58 pv d4e5 b4a4 g3g4 d6e5<br>
+info depth 5 move_no 1 time (microsec) 538911 nodes 1787871 nps 3317557<br>
+info score cp -64 pv d4e5 b4a4 g3g4 d6e5 f4f3<br>
+bestmove d4e5<br>
+info depth 1 move_no 1 time (microsec) 61 nodes 170 nps 2752234<br>
+info score cp -340 pv f4R d4e5<br>
+info depth 1 move_no 4 time (microsec) 176 nodes 486 nps 2755664<br>
+info score cp -339 pv d2d3 d4e5<br>
+info depth 1 move_no 5 time (microsec) 215 nodes 567 nps 2631554<br>
+info score cp -338 pv h7U<br>
+info depth 1 move_no 37 time (microsec) 972 nodes 3031 nps 3117405<br>
+info score cp -176 pv d2e3<br>
+info depth 1 move_no 50 time (microsec) 1046 nodes 3175 nps 3033418<br>
+info score cp -118 pv h0g0<br>
+info depth 1 move_no 63 time (microsec) 1121 nodes 3319 nps 2960588<br>
+info score cp -111 pv g3h3<br>
+info depth 2 move_no 1 time (microsec) 1577 nodes 4055 nps 2571212<br>
+info score cp -114 pv g3h3 a5a4<br>
+info depth 2 move_no 2 time (microsec) 3401 nodes 9283 nps 2729147<br>
+info score cp -60 pv h0g0 a5a4 g0f1<br>
+info depth 3 move_no 1 time (microsec) 8074 nodes 20770 nps 2572142<br>
+info score cp -37 pv h0g0 a5a4 g0f1 a4b5<br>
+info depth 4 move_no 1 time (microsec) 46481 nodes 150432 nps 3236387<br>
+info score cp -39 pv h0g0 a5b5 g3f2 b5a4 f4R<br>
+info depth 5 move_no 1 time (microsec) 156810 nodes 509737 nps 3250648<br>
+info score cp -34 pv h0g0 a5a4 g0f0 a4b5 f4e3 a7b7<br>
+info depth 6 move_no 1 time (microsec) 921169 nodes 3098347 nps 3363493<br>
+info score cp -30 pv h0g0 a5a4 g0f1 a4a5 h7U d6R d0d1<br>
+bestmove h0g0<br>
+info depth 1 move_no 1 time (microsec) 39 nodes 68 nps 1738196<br>
+info score cp -31999 pv c3R a4a3<br>
+info depth 1 move_no 2 time (microsec) 447 nodes 1442 nps 3224666<br>
+info score cp -370 pv g3L d4e3<br>
+info depth 1 move_no 6 time (microsec) 539 nodes 1616 nps 2998072<br>
+info score cp -358 pv g0h1 d4e4<br>
+info depth 1 move_no 15 time (microsec) 1299 nodes 3878 nps 2985191<br>
+info score cp -64 pv g0f0<br>
+info depth 1 move_no 59 time (microsec) 1463 nodes 4139 nps 2828551<br>
+info score cp -60 pv g0f1<br>
+info depth 2 move_no 1 time (microsec) 1619 nodes 4378 nps 2702983<br>
+info score cp -45 pv g0f1 a4a5<br>
+info depth 2 move_no 2 time (microsec) 1778 nodes 4619 nps 2596843<br>
+info score cp -41 pv g0f0 a4b5<br>
+info depth 3 move_no 1 time (microsec) 3419 nodes 9618 nps 2812876<br>
+info score cp -28 pv g0f0 a4b5 f4e3<br>
+info depth 4 move_no 1 time (microsec) 4814 nodes 13619 nps 2828673<br>
+info score cp -34 pv g0f0 a4b5 f4e3 a7b6<br>
+info depth 5 move_no 1 time (microsec) 33107 nodes 103288 nps 3119759<br>
+info score cp -39 pv g0f0 a4b5 f4e3 a7b6 d2d3<br>
+info depth 5 move_no 2 time (microsec) 41490 nodes 126878 nps 3058032<br>
+info score cp -30 pv g0f1 a4a5 h7U d6R d0d1<br>
+info depth 6 move_no 1 time (microsec) 247010 nodes 810657 nps 3281867<br>
+info score cp -32 pv g0f1 a4a5 g3f3 a5b5 f1g1 b5a4<br>
+info depth 7 move_no 1 time (microsec) 949302 nodes 3245947 nps 3419298<br>
+info score cp -21 pv g0f1 a4a5 h7U d6R d0d1 c3d3 f4e4<br>
+bestmove g0f1<br>
+info depth 1 move_no 1 time (microsec) 129 nodes 365 nps 2813232<br>
+info score cp -138 pv d2e2 d4e5 f1e1<br>
+info depth 1 move_no 5 time (microsec) 409 nodes 1364 nps 3328899<br>
+info score cp -130 pv e1d1 d4e5 f1e0 a7b6<br>
+info depth 1 move_no 7 time (microsec) 594 nodes 1969 nps 3310668<br>
+info score cp 36 pv g3f3<br>
+info depth 1 move_no 47 time (microsec) 692 nodes 2203 nps 3182592<br>
+info score cp 45 pv f1g0<br>
+info depth 2 move_no 1 time (microsec) 924 nodes 2789 nps 3017921<br>
+info score cp 33 pv f1g0 a5a4<br>
+info depth 3 move_no 1 time (microsec) 3658 nodes 12056 nps 3295135<br>
+info score cp -60 pv f1g0 a5a4 g0f1<br>
+info depth 3 move_no 2 time (microsec) 4695 nodes 14975 nps 3189055<br>
+info score cp -38 pv g3f3 a5a4 f3e3<br>
+info depth 3 move_no 56 time (microsec) 10634 nodes 34359 nps 3230787<br>
+info score cp -30 pv h7U d6R d0d1<br>
+info depth 4 move_no 1 time (microsec) 12986 nodes 40898 nps 3149389<br>
+info score cp -25 pv h7U d6R d0d1 c3d3<br>
+info depth 5 move_no 1 time (microsec) 70959 nodes 246850 nps 3478756<br>
+info score cp -21 pv h7U d6R d0d1 c3d3 f4e4<br>
+info depth 6 move_no 1 time (microsec) 452012 nodes 1531994 nps 3389271<br>
+info score cp -28 pv h7U a5b5 d0d1 a7b6 d2e3 b2c2<br>
+info depth 6 move_no 2 time (microsec) 768961 nodes 2552994 nps 3320054<br>
+info score cp -18 pv g3f3 a5b5 f1g1 e7e6 d0d1 a7b6<br>
+bestmove g3f3<br>
+info depth 1 move_no 1 time (microsec) 28 nodes 60 nps 2087101<br>
+info score cp -31999 pv e1L b2a3<br>
+info depth 1 move_no 9 time (microsec) 105 nodes 156 nps 1477552<br>
+info score cp -22 pv f3e2<br>
+info depth 1 move_no 65 time (microsec) 344 nodes 498 nps 1445040<br>
+info score cp -21 pv f1g1<br>
+info depth 2 move_no 1 time (microsec) 566 nodes 1120 nps 1976535<br>
+info score cp -32 pv f1g1 b5a4<br>
+info depth 3 move_no 1 time (microsec) 2094 nodes 6061 nps 2894407<br>
+info score cp -37 pv f1g1 b5a4 f4e4<br>
+info depth 4 move_no 1 time (microsec) 11579 nodes 34505 nps 2979735<br>
+info score cp -18 pv f1g1 e7e6 d0d1 a7b6<br>
+info depth 5 move_no 1 time (microsec) 169557 nodes 550111 nps 3244399<br>
+info score cp -18 pv f1g1 d4e4 h7R e4f3 d2e3<br>
+info depth 6 move_no 1 time (microsec) 414823 nodes 1390667 nps 3352429<br>
+info score cp -14 pv f1g1 d4e5 h7g6 a7b7 d2e3 b2c2<br>
+info depth 7 move_no 1 time (microsec) 1407728 nodes 4690860 nps 3332220<br>
+info score cp -15 pv f1g1 d4e5 d2e3 d6R h7g6 b5a5 f4R<br>
+bestmove f1g1<br>
+info depth 1 move_no 1 time (microsec) 70 nodes 256 nps 3621393<br>
+info score cp -225 pv f3R b2a2<br>
+info depth 1 move_no 4 time (microsec) 204 nodes 751 nps 3666472<br>
+info score cp -195 pv f4g3 a7b7<br>
+info depth 1 move_no 5 time (microsec) 272 nodes 984 nps 3610810<br>
+info score cp -176 pv e1L a7b7<br>
+info depth 1 move_no 8 time (microsec) 370 nodes 1129 nps 3044029<br>
+info score cp -19 pv d2e3<br>
+info depth 1 move_no 51 time (microsec) 545 nodes 1579 nps 2893123<br>
+info score cp 0 pv h7g6<br>
+info depth 2 move_no 1 time (microsec) 727 nodes 2162 nps 2972356<br>
+info score cp -14 pv h7g6 a7b7<br>
+info depth 3 move_no 1 time (microsec) 2993 nodes 10208 nps 3409749<br>
+info score cp -19 pv h7g6 a7b7 d2e3<br>
+info depth 3 move_no 2 time (microsec) 5064 nodes 16656 nps 3289012<br>
+info score cp -18 pv d2e3 e5f4 e5e4<br>
+info depth 3 move_no 63 time (microsec) 12015 nodes 40287 nps 3353049<br>
+info score cp 0 pv f4R b2b1 d0c1<br>
+info depth 4 move_no 1 time (microsec) 18911 nodes 60830 nps 3216585<br>
+info score cp -15 pv f4R b2b1 d2e3 b1a0 f3g3 a7a6 e7L<br>
+info depth 5 move_no 1 time (microsec) 93586 nodes 306633 nps 3276478<br>
+info score cp -19 pv f4R e5f4 d2e3 f4f3 e3U<br>
+info depth 5 move_no 2 time (microsec) 159629 nodes 531962 nps 3332477<br>
+info score cp -15 pv d2e3 d6R h7g6 b5a5 f4R<br>
+info depth 6 move_no 1 time (microsec) 356078 nodes 1181427 nps 3317881<br>
+info score cp -7 pv d2e3 d6R h7g6 e7e6 g6g7 a7a6<br>
+bestmove d2e3<br>
+info depth 1 move_no 1 time (microsec) 65 nodes 185 nps 2822660<br>
+info score cp -31999 pv e1e0 b2a1<br>
+info depth 1 move_no 2 time (microsec) 140 nodes 375 nps 2662935<br>
+info score cp -271 pv g1U a7b7<br>
+info depth 1 move_no 4 time (microsec) 442 nodes 1324 nps 2993436<br>
+info score cp -185 pv e3U b5a5<br>
+info depth 1 move_no 9 time (microsec) 632 nodes 2000 nps 3160930<br>
+info score cp -165 pv d0c1 b5a5<br>
+info depth 1 move_no 15 time (microsec) 765 nodes 2333 nps 3048728<br>
+info score cp -18 pv e5e4<br>
+info depth 2 move_no 1 time (microsec) 973 nodes 2842 nps 2917903<br>
+info score cp -20 pv e5e4 b5a5<br>
+info depth 2 move_no 25 time (microsec) 1667 nodes 5289 nps 3171951<br>
+info score cp -14 pv e5R f4e4<br>
+info depth 3 move_no 1 time (microsec) 3052 nodes 10513 nps 3444558<br>
+info score cp -19 pv e5R f4f3 f4L<br>
+info depth 3 move_no 2 time (microsec) 3846 nodes 12863 nps 3344386<br>
+info score cp -18 pv e5e4 f4f3 e3U<br>
+info depth 3 move_no 56 time (microsec) 6927 nodes 22756 nps 3284741<br>
+info score cp -7 pv e5f6 b5a5 d0d1<br>
+info depth 4 move_no 1 time (microsec) 22275 nodes 69775 nps 3132370<br>
+info score cp -24 pv e5f6 f4f3 f4L b5a4 g1f0 a4a3 f6e5<br>
+info depth 5 move_no 1 time (microsec) 272794 nodes 971664 nps 3561889<br>
+info score cp -38 pv e5f6 f4f3 e3U b2a2 h7g7<br>
+info depth 5 move_no 3 time (microsec) 336483 nodes 1206130 nps 3584516<br>
+info score cp -37 pv e5R f4f3 e3U b2a2 h7g7<br>
+info depth 6 move_no 1 time (microsec) 603749 nodes 2148327 nps 3558309<br>
+info score cp -21 pv e5R f4f3 e3f3 d6e5 d6c7 a7a6<br>
+info depth 6 move_no 2 time (microsec) 902909 nodes 3201113 nps 3545329<br>
+info score cp -18 pv e5f6 f4f3 e3f3 b2b3 f3U e7f6<br>
+bestmove e5f6<br>
+info depth 1 move_no 1 time (microsec) 75 nodes 190 nps 2524514<br>
+info score cp -20 pv e3L<br>
+info depth 1 move_no 28 time (microsec) 264 nodes 645 nps 2439485<br>
+info score cp -19 pv f4e4<br>
+info depth 1 move_no 64 time (microsec) 393 nodes 946 nps 2403913<br>
+info score cp 0 pv h7g6<br>
+info depth 2 move_no 1 time (microsec) 645 nodes 1833 nps 2839848<br>
+info score cp -40 pv h7g6 b2a2<br>
+info depth 2 move_no 17 time (microsec) 1315 nodes 3546 nps 2695421<br>
+info score cp -37 pv h7g7 b2a3 d0c1<br>
+info depth 2 move_no 36 time (microsec) 2045 nodes 5401 nps 2639993<br>
+info score cp -33 pv e3f4 b2a2 g1f0<br>
+info depth 3 move_no 1 time (microsec) 6337 nodes 22157 nps 3496021<br>
+info score cp -73 pv e3f4 b2a3 g1g0 e3f4<br>
+info depth 3 move_no 2 time (microsec) 9941 nodes 34341 nps 3454325<br>
+info score cp -64 pv h7g7 b2a3 e1d1 a7a6<br>
+info depth 3 move_no 3 time (microsec) 11293 nodes 39436 nps 3491853<br>
+info score cp -46 pv h7g6 b2a2 f4f3<br>
+info depth 3 move_no 23 time (microsec) 15906 nodes 53429 nps 3359028<br>
+info score cp -42 pv d0c1 b2a3 h7R a3a2<br>
+info depth 3 move_no 50 time (microsec) 21513 nodes 72773 nps 3382588<br>
+info score cp -41 pv d0d1 b2a3 h7R a3a2<br>
+info depth 3 move_no 59 time (microsec) 22907 nodes 77659 nps 3390074<br>
+info score cp -38 pv e3U b2a2 h7g7<br>
+info depth 4 move_no 1 time (microsec) 37065 nodes 122091 nps 3293956<br>
+info score cp -41 pv e3U d6R d0c1 b2a2<br>
+info depth 4 move_no 2 time (microsec) 49218 nodes 156157 nps 3172746<br>
+info score cp -40 pv d0d1 d6R e3d4 b2a2<br>
+info depth 4 move_no 3 time (microsec) 71545 nodes 225763 nps 3155501<br>
+info score cp -31 pv d0c1 d6d7 f4L b5a6 g1f1 a7b7<br>
+info depth 4 move_no 21 time (microsec) 95443 nodes 304545 nps 3190843<br>
+info score cp -18 pv e3f3 b2b3 f3U e7f6<br>
+info depth 5 move_no 1 time (microsec) 254679 nodes 869646 nps 3414663<br>
+info score cp -70 pv e3f3 e3f2 f4e3 b2a3 g1g0 e1L<br>
+info depth 5 move_no 2 time (microsec) 396307 nodes 1391693 nps 3511651<br>
+info score cp -27 pv d0c1 d6d5 h7R b2a2 f6g7 a2a3<br>
+bestmove d0c1<br>
+info depth 1 move_no 1 time (microsec) 54 nodes 154 nps 2809757<br>
+info score cp 0 pv c1U<br>
+info depth 1 move_no 3 time (microsec) 116 nodes 283 nps 2425436<br>
+info score cp 1 pv f4e4<br>
+info depth 1 move_no 62 time (microsec) 272 nodes 563 nps 2062747<br>
+info score cp 21 pv h7g6<br>
+info depth 1 move_no 64 time (microsec) 343 nodes 745 nps 2171372<br>
+info score cp 29 pv h7g7<br>
+info depth 2 move_no 1 time (microsec) 453 nodes 955 nps 2104761<br>
+info score cp -52 pv h7g7 b2a2<br>
+info depth 2 move_no 2 time (microsec) 591 nodes 1308 nps 2210777<br>
+info score cp 18 pv h7g6 f2g1<br>
+info depth 3 move_no 1 time (microsec) 1813 nodes 5412 nps 2984123<br>
+info score cp -31997 pv h7g6 f2g1 f4g3 b2a2<br>
+info depth 3 move_no 2 time (microsec) 2280 nodes 6414 nps 2813044<br>
+info score cp -364 pv h7g7 b2a2 g1h1 f2e2<br>
+info depth 3 move_no 3 time (microsec) 6221 nodes 21556 nps 3464597<br>
+info score cp -123 pv f4e4 b5a4 e1f2 e3U g1L e4R c1b2 e4d4<br>
+info depth 3 move_no 33 time (microsec) 37265 nodes 142288 nps 3818205<br>
+info score cp 7 pv c1b2 d6d5 g1L b5a6 c1L f2f3<br>
+info depth 4 move_no 1 time (microsec) 87095 nodes 322975 nps 3708268<br>
+info score cp -16 pv c1b2 c1b1 h7g6 b1a0<br>
+info depth 5 move_no 1 time (microsec) 203738 nodes 750063 nps 3681497<br>
+info score cp -14 pv c1b2 c1b1 b2U b1a0 h7g7<br>
+info depth 6 move_no 1 time (microsec) 578481 nodes 2108826 nps 3645453<br>
+info score cp -18 pv c1b2 c1b1 b2U b1a0 h7g6 e7f6<br>
+bestmove c1b2<br>
+info depth 1 move_no 1 time (microsec) 49 nodes 127 nps 2586716<br>
+info score cp -321 pv g1U b1a2<br>
+info depth 1 move_no 2 time (microsec) 122 nodes 255 nps 2081683<br>
+info score cp -244 pv b2c2 b1a2<br>
+info depth 1 move_no 3 time (microsec) 196 nodes 462 nps 2346011<br>
+info score cp -46 pv f4e4 b1a2 g1f1<br>
+info depth 1 move_no 12 time (microsec) 387 nodes 950 nps 2454431<br>
+info score cp 3 pv b2c3<br>
+info depth 1 move_no 36 time (microsec) 479 nodes 1099 nps 2291746<br>
+info score cp 22 pv h7g6<br>
+info depth 2 move_no 1 time (microsec) 972 nodes 2713 nps 2791077<br>
+info score cp -16 pv h7g6 b1a0<br>
+info depth 3 move_no 1 time (microsec) 2754 nodes 8134 nps 2952933<br>
+info score cp -172 pv h7g6 f2g1 f2g3 b1a2<br>
+info depth 3 move_no 3 time (microsec) 4192 nodes 12790 nps 3050701<br>
+info score cp -95 pv f4e4 b5a4 h7R<br>
+info depth 3 move_no 29 time (microsec) 6543 nodes 20504 nps 3133615<br>
+info score cp -14 pv b2U b1a0 h7g7<br>
+info depth 4 move_no 1 time (microsec) 9591 nodes 28834 nps 3006325<br>
+info score cp -18 pv b2U b1a0 h7g6 e7f6<br>
+info depth 5 move_no 1 time (microsec) 125219 nodes 446320 nps 3564312<br>
+info score cp -42 pv b2U b1a0 e3f2 c3b2 f4e3<br>
+info depth 6 move_no 1 time (microsec) 301371 nodes 1071737 nps 3556200<br>
+info score cp -37 pv b2U b1a0 e3f2 c3b2 f4e3 d6e5<br>
+info depth 7 move_no 1 time (microsec) 1212852 nodes 4354743 nps 3590496<br>
+info score cp -44 pv b2U b1a0 e3f2 e3e2 f4e3 e2f1 f2f1<br>
+bestmove b2U<br>
+info depth 1 move_no 1 time (microsec) 40 nodes 69 nps 1710631<br>
+info score cp -41 pv b2c3<br>
+info depth 1 move_no 19 time (microsec) 184 nodes 460 nps 2493698<br>
+info score cp -22 pv h7g6<br>
+info depth 1 move_no 42 time (microsec) 265 nodes 620 nps 2333748<br>
+info score cp -14 pv h7g7<br>
+info depth 2 move_no 1 time (microsec) 689 nodes 2015 nps 2921941<br>
+info score cp -20 pv h7g7 a7a6<br>
+info depth 2 move_no 2 time (microsec) 1011 nodes 3045 nps 3009839<br>
+info score cp -18 pv h7g6 e7f6<br>
+info depth 3 move_no 1 time (microsec) 3247 nodes 11487 nps 3537514<br>
+info score cp -31997 pv h7g6 f2g1 f4g3 g1f0<br>
+info depth 3 move_no 10 time (microsec) 12426 nodes 41909 nps 3372562<br>
+info score cp -506 pv g1h2 a0a1 f4g5 e1U h2h3<br>
+info depth 3 move_no 13 time (microsec) 16044 nodes 52020 nps 3242268<br>
+info score cp -200 pv e3e4 f2f1 b2a2 a2L<br>
+info depth 3 move_no 14 time (microsec) 17830 nodes 58513 nps 3281599<br>
+info score cp -199 pv e1f1 f2f1 b2a2 a2L<br>
+info depth 3 move_no 18 time (microsec) 21058 nodes 70133 nps 3330338<br>
+info score cp -181 pv b2a1 a1L h7g6 e7f6<br>
+info depth 3 move_no 26 time (microsec) 28791 nodes 99529 nps 3456946<br>
+info score cp -42 pv e3f2 c3b2 f4e3<br>
+info depth 4 move_no 1 time (microsec) 36124 nodes 120751 nps 3342673<br>
+info score cp -37 pv e3f2 c3b2 f4e3 f4e4<br>
+info depth 5 move_no 1 time (microsec) 90639 nodes 309583 nps 3415545<br>
+info score cp -44 pv e3f2 e3e2 f6e5 e2f1 f2f1<br>
+info depth 6 move_no 1 time (microsec) 255583 nodes 931699 nps 3645376<br>
+info score cp -40 pv e3f2 e3e2 h7R e2f1 e1f1 e7f6<br>
+info depth 7 move_no 1 time (microsec) 2212442 nodes 7963392 nps 3599366<br>
+info score cp -44 pv e3f2 e3e2 h7R e2f1 e1f1 e7f6 e7d6<br>
+bestmove e3f2<br>
+info depth 1 move_no 1 time (microsec) 58 nodes 192 nps 3268640<br>
+info score cp -209 pv b2a2 a2R<br>
+info depth 1 move_no 2 time (microsec) 106 nodes 262 nps 2455528<br>
+info score cp -45 pv f6R<br>
+info depth 1 move_no 9 time (microsec) 189 nodes 487 nps 2566169<br>
+info score cp -44 pv f6f5<br>
+info depth 1 move_no 11 time (microsec) 224 nodes 555 nps 2475313<br>
+info score cp -15 pv h7g7<br>
+info depth 1 move_no 23 time (microsec) 267 nodes 622 nps 2321900<br>
+info score cp 20 pv f4g3<br>
+info depth 2 move_no 1 time (microsec) 1547 nodes 6193 nps 4001752<br>
+info score cp 26 pv f4g3 b5b4<br>
+info depth 3 move_no 1 time (microsec) 3880 nodes 13939 nps 3592077<br>
+info score cp -135 pv f4g3 e2f1 b2a2 a2L<br>
+info depth 3 move_no 4 time (microsec) 6449 nodes 23504 nps 3644396<br>
+info score cp -45 pv f6R e2f1 f2f1<br>
+info depth 3 move_no 22 time (microsec) 9920 nodes 36288 nps 3657700<br>
+info score cp -44 pv f4e3 e2f1 f2f1<br>
+info depth 4 move_no 1 time (microsec) 13688 nodes 51146 nps 3736432<br>
+info score cp -145 pv f4e3 e2f1 f2f1 a0a1<br>
+info depth 4 move_no 2 time (microsec) 17888 nodes 61142 nps 3417975<br>
+info score cp -91 pv f6R e2e1 f2e3 e1f0<br>
+info depth 4 move_no 15 time (microsec) 29686 nodes 99630 nps 3356096<br>
+info score cp -40 pv f2L e2f1 f2f1 b5b4<br>
+info depth 5 move_no 1 time (microsec) 45395 nodes 153508 nps 3381560<br>
+info score cp -204 pv f2L e2f1 b2a1 a1L f2f1 e7f6<br>
+info depth 5 move_no 2 time (microsec) 59794 nodes 196469 nps 3285729<br>
+info score cp -184 pv f6R e2e1 h7g6 e1e0 b2c1 c3d4<br>
+info depth 5 move_no 3 time (microsec) 117189 nodes 413954 nps 3532347<br>
+info score cp -135 pv f4e3 e2f1 f2f1 a0a1 b2a1 b2a3<br>
+info depth 5 move_no 4 time (microsec) 132220 nodes 464427 nps 3512516<br>
+info score cp -129 pv f4g3 e2f1 f2f1 f2e1 f1U e1d0<br>
+info depth 5 move_no 39 time (microsec) 267926 nodes 958911 nps 3579014<br>
+info score cp -44 pv f2U e2e1 h7R e1f1 f2f1<br>
+info depth 6 move_no 1 time (microsec) 349787 nodes 1247566 nps 3566640<br>
+info score cp -88 pv f2U e2f1 f2f1 f2e1 f6e5 e1f0<br>
+info depth 6 move_no 3 time (microsec) 620857 nodes 2224454 nps 3582875<br>
+info score cp -60 pv f4e3 c3b4 f2e3 e2f1 f2f1 b4a3 g1f1 a3b4<br>
+bestmove f4e3<br>
+info depth 1 move_no 1 time (microsec) 31 nodes 66 nps 2117284<br>
+info score cp -43 pv b2c1<br>
+info depth 1 move_no 52 time (microsec) 200 nodes 514 nps 2565331<br>
+info score cp -42 pv b2c3<br>
+info depth 2 move_no 1 time (microsec) 486 nodes 1583 nps 3250653<br>
+info score cp -38 pv b2c3 e2e3<br>
+info depth 3 move_no 1 time (microsec) 3016 nodes 11375 nps 3770686<br>
+info score cp -233 pv b2c3 e2f1 g1h1 f1f0<br>
+info depth 3 move_no 2 time (microsec) 6084 nodes 22545 nps 3705057<br>
+info score cp -199 pv b2c1 e2f1 c1b0 b0U<br>
+info depth 3 move_no 3 time (microsec) 9598 nodes 35790 nps 3728805<br>
+info score cp -163 pv h7g7 e2e1 f2R e1d0<br>
+info depth 3 move_no 14 time (microsec) 13849 nodes 51256 nps 3700913<br>
+info score cp -44 pv f2U e2f1 f2f1<br>
+info depth 4 move_no 1 time (microsec) 16772 nodes 62481 nps 3725192<br>
+info score cp -114 pv f2U e2f1 f2f1 b4a3<br>
+info depth 4 move_no 24 time (microsec) 21696 nodes 79159 nps 3648522<br>
+info score cp -60 pv e3f2 e2f1 f2f1 b4a3 g1f1 a3b4<br>
+info depth 5 move_no 1 time (microsec) 38416 nodes 143781 nps 3742690<br>
+info score cp -162 pv e3f2 e2f1 f2f1 f2e1 h7R b4a3<br>
+info depth 5 move_no 2 time (microsec) 97615 nodes 374400 nps 3835457<br>
+info score cp -64 pv f2U e2f1 f2f1 b4a3 b2a3 a3L g1f1<br>
+info depth 6 move_no 1 time (microsec) 188366 nodes 700622 nps 3719468<br>
+info score cp -88 pv f2U e2f1 f2f1 f2e1 h7R e1f0<br>
+info depth 7 move_no 1 time (microsec) 628159 nodes 2326515 nps 3703702<br>
+info score cp -211 pv f2U e2f1 f2f1 f2e1 g1U e1d0 f1R a0b1<br>
+info depth 7 move_no 5 time (microsec) 1863040 nodes 6958607 nps 3735080<br>
+info score cp -185 pv b2c3 e2d1 h7R e7d7 e3d4 d1e0 g1g2 d6e5<br>
+info depth 7 move_no 21 time (microsec) 2569591 nodes 9465687 nps 3683732<br>
+info score cp -154 pv e3d4 e2f1 f2f1 a0a1 f1L a1b2 g1f1 a1L d4e3 b5a5<br>
+bestmove e3d4<br>
+info depth 1 move_no 1 time (microsec) 36 nodes 66 nps 1792894<br>
+info score cp -31999 pv d4R f1g0<br>
+info depth 1 move_no 5 time (microsec) 233 nodes 511 nps 2185049<br>
+info score cp -304 pv e1e0 e7f6<br>
+info depth 1 move_no 13 time (microsec) 344 nodes 815 nps 2366455<br>
+info score cp -199 pv b2a3 a3L<br>
+info depth 2 move_no 1 time (microsec) 1477 nodes 3999 nps 2705952<br>
+info score cp -426 pv b2a3 a3L f2f1 a0a1<br>
+info depth 2 move_no 62 time (microsec) 7811 nodes 24188 nps 3096458<br>
+info score cp -173 pv f2f1 a0a1 b2a1<br>
+info depth 3 move_no 1 time (microsec) 9292 nodes 29443 nps 3168618<br>
+info score cp -146 pv f2f1 a0a1 f1L a1b2 g1f1 a1L<br>
+info depth 4 move_no 1 time (microsec) 12301 nodes 39251 nps 3190818<br>
+info score cp -140 pv f2f1 a0a1 f1L a1b2 g1f1 a1L g1f1<br>
+info depth 5 move_no 1 time (microsec) 22011 nodes 74255 nps 3373507<br>
+info score cp -154 pv f2f1 a0a1 f1L a1b2 g1f1 a1L d4e3 b5a5<br>
+info depth 6 move_no 1 time (microsec) 129531 nodes 457264 nps 3530134<br>
+info score cp -142 pv f2f1 a0a1 f1L a1b2 g1f1 a1L d4e3 b5a6 g1f1 a6a5<br>
+info depth 7 move_no 1 time (microsec) 630454 nodes 2395090 nps 3798991<br>
+info score cp -139 pv f2f1 a0a1 f1L a1b2 g1f1 a1L d4e3 b4U f6e7 a7L e3f4 a7R<br>
+bestmove f2f1<br>
+info depth 1 move_no 1 time (microsec) 38 nodes 79 nps 2072457<br>
+info score cp -31999 pv b2R e1f0<br>
+info depth 1 move_no 2 time (microsec) 120 nodes 208 nps 1728579<br>
+info score cp -426 pv b2c1 c1U<br>
+info depth 1 move_no 21 time (microsec) 405 nodes 613 nps 1511225<br>
+info score cp -269 pv f1U<br>
+info depth 1 move_no 38 time (microsec) 533 nodes 769 nps 1441678<br>
+info score cp -268 pv f1f2<br>
+info depth 1 move_no 43 time (microsec) 606 nodes 973 nps 1605570<br>
+info score cp -173 pv b2a1<br>
+info depth 2 move_no 1 time (microsec) 755 nodes 1309 nps 1733588<br>
+info score cp -306 pv b2a1 a1R<br>
+info depth 2 move_no 2 time (microsec) 917 nodes 1536 nps 1674747<br>
+info score cp -262 pv f1f2 f1R<br>
+info depth 2 move_no 53 time (microsec) 1374 nodes 2911 nps 2117491<br>
+info score cp -146 pv f1L a1b2 g1f1 a1L<br>
+info depth 3 move_no 1 time (microsec) 1701 nodes 3909 nps 2297030<br>
+info score cp -148 pv f1L a1b2 g1f1 a1L f6e7 a7L f6L<br>
+info depth 4 move_no 1 time (microsec) 3010 nodes 8789 nps 2919459<br>
+info score cp -147 pv f1L a1b2 g1f1 a1L d4e3 d6c5<br>
+info depth 5 move_no 1 time (microsec) 6038 nodes 20406 nps 3379198<br>
+info score cp -142 pv f1L a1b2 g1f1 a1L d4e3 b5a6 f1g1 a6a5<br>
+info depth 6 move_no 1 time (microsec) 24808 nodes 86096 nps 3470387<br>
+info score cp -139 pv f1L a1b2 g1f1 a1L d4e3 b4U f6e7 a7L e3f4 a7R<br>
+info depth 7 move_no 1 time (microsec) 224935 nodes 877272 nps 3900107<br>
+info score cp -143 pv f1L a1b2 g1f1 a1L d4e3 b5a6 e3f3 a6b5 f1g1 b5a5<br>
+info depth 8 move_no 1 time (microsec) 1018636 nodes 3955734 nps 3883363<br>
+info score cp -141 pv f1L a1b2 g1f1 a1L d4e4 b5a6 e4f3 a6b5 f1g1 b5a5 f3g3<br>
+bestmove f1L<br>
+info depth 1 move_no 1 time (microsec) 45 nodes 130 nps 2841902<br>
+info score cp -321 pv g1h0 a1L<br>
+info depth 1 move_no 2 time (microsec) 102 nodes 265 nps 2574865<br>
+info score cp -297 pv e1f2 a1L<br>
+info depth 1 move_no 6 time (microsec) 189 nodes 553 nps 2911476<br>
+info score cp -225 pv g1g2<br>
+info depth 1 move_no 10 time (microsec) 302 nodes 936 nps 3094276<br>
+info score cp -174 pv d4c5<br>
+info depth 1 move_no 15 time (microsec) 366 nodes 1139 nps 3111936<br>
+info score cp -173 pv f1R<br>
+info depth 1 move_no 33 time (microsec) 486 nodes 1532 nps 3150325<br>
+info score cp -146 pv f1g1 a1L<br>
+info depth 2 move_no 1 time (microsec) 653 nodes 2018 nps 3086665<br>
+info score cp -140 pv f1g1 a1L f1g1<br>
+info depth 3 move_no 1 time (microsec) 2046 nodes 7558 nps 3693103<br>
+info score cp -144 pv f1g1 a1L f6e7 a7L f6L b5c4<br>
+info depth 4 move_no 1 time (microsec) 6164 nodes 24703 nps 4007587<br>
+info score cp -142 pv f1g1 a1L f6f7 b2a2 f7e7<br>
+info depth 5 move_no 1 time (microsec) 28091 nodes 111726 nps 3977274<br>
+info score cp -141 pv f1g1 a1L f6f7 a7L g1f1 b5c4 f1f2<br>
+info depth 6 move_no 1 time (microsec) 110943 nodes 437678 nps 3945048<br>
+info score cp -143 pv f1g1 a1L d4e3 b5a6 e3f3 a6b5 g1f1 b5a5<br>
+info depth 7 move_no 1 time (microsec) 471874 nodes 1822927 nps 3863161<br>
+info score cp -142 pv f1g1 a1L f6f7 a7L d4e5 a7R e5e6 d6e6 f1g1<br>
+bestmove f1g1<br>
+info depth 1 move_no 1 time (microsec) 42 nodes 121 nps 2869882<br>
+info score cp -147 pv g1h1 a1L<br>
+info depth 1 move_no 5 time (microsec) 149 nodes 490 nps 3268540<br>
+info score cp -134 pv g1f1 a1L<br>
+info depth 1 move_no 20 time (microsec) 380 nodes 1309 nps 3440508<br>
+info score cp -120 pv f6f7 a1L<br>
+info depth 2 move_no 1 time (microsec) 1004 nodes 3472 nps 3456734<br>
+info score cp -126 pv f6f7 a1L d4e4<br>
+info depth 3 move_no 1 time (microsec) 4069 nodes 12838 nps 3154777<br>
+info score cp -128 pv f6f7 a1L d4e3 b5a5<br>
+info depth 4 move_no 1 time (microsec) 19838 nodes 76235 nps 3842690<br>
+info score cp -152 pv f6f7 a1L d4e3 d6U f7e6<br>
+info depth 4 move_no 11 time (microsec) 26283 nodes 99728 nps 3794299<br>
+info score cp -151 pv e1L a1L d4e4 d6U f6e5<br>
+info depth 4 move_no 25 time (microsec) 35022 nodes 131626 nps 3758367<br>
+info score cp -142 pv g1L a1L d4e4 b5a6 f1g1 a6a5<br>
+info depth 5 move_no 1 time (microsec) 81336 nodes 300284 nps 3691877<br>
+info score cp -173 pv g1L a1L d4e4 b2b1 f6f7 b1a0<br>
+info depth 6 move_no 1 time (microsec) 377350 nodes 1431914 nps 3794653<br>
+info score cp -175 pv g1L a1L d4e4 b2b1 f6f7 b1a0 f1f2<br>
+info depth 6 move_no 14 time (microsec) 540859 nodes 2062164 nps 3812751<br>
+info score cp -172 pv d4e5 a1L e5e6 b2b1 e6d7 b1a2 f6e6<br>
+bestmove d4e5<br>
+info depth 1 move_no 1 time (microsec) 27 nodes 60 nps 2220084<br>
+info score cp -153 pv g1R<br>
+info depth 1 move_no 16 time (microsec) 90 nodes 139 nps 1528496<br>
+info score cp -141 pv f1g1<br>
+info depth 1 move_no 55 time (microsec) 164 nodes 271 nps 1649371<br>
+info score cp -127 pv f6f7<br>
+info depth 2 move_no 1 time (microsec) 331 nodes 832 nps 2507753<br>
+info score cp -147 pv f6f7 b4a3<br>
+info depth 3 move_no 1 time (microsec) 897 nodes 3222 nps 3591308<br>
+info score cp -153 pv f6f7 b2b1 f7e7<br>
+info depth 4 move_no 1 time (microsec) 3328 nodes 11902 nps 3575721<br>
+info score cp -179 pv f6f7 d6e5 d6e6 b2a2<br>
+info depth 4 move_no 3 time (microsec) 7295 nodes 26071 nps 3573520<br>
+info score cp -177 pv g1R b2b1 f6f7 b1a2<br>
+info depth 4 move_no 7 time (microsec) 9219 nodes 29821 nps 3234695<br>
+info score cp -174 pv e1L b2b1 f6f7 b1a0<br>
+info depth 5 move_no 1 time (microsec) 34093 nodes 127702 nps 3745673<br>
+info score cp -163 pv e1L b2b1 e5d6 b1a0 f1e2<br>
+info depth 6 move_no 1 time (microsec) 73243 nodes 274349 nps 3745720<br>
+info score cp -174 pv e1L b2b1 f6f7 b1a0 e5e4 d6e5<br>
+info depth 7 move_no 1 time (microsec) 273604 nodes 1037482 nps 3791903<br>
+info score cp -179 pv e1L b2b1 g1L b1a0 f6f7 b4b3 e5e4<br>
+info depth 7 move_no 3 time (microsec) 417184 nodes 1593854 nps 3820498<br>
+info score cp -177 pv f6f7 b2b1 g1L b4b3 g1f1 b1a0 f7g7<br>
+bestmove f6f7<br>
+info depth 1 move_no 1 time (microsec) 36 nodes 79 nps 2188609<br>
+info score cp -126 pv g1R<br>
+info depth 2 move_no 1 time (microsec) 213 nodes 500 nps 2343083<br>
+info score cp -177 pv g1R b1a2<br>
+info depth 3 move_no 1 time (microsec) 1205 nodes 5023 nps 4168412<br>
+info score cp -179 pv g1R b1a0 e5e4<br>
+info depth 3 move_no 25 time (microsec) 2405 nodes 9910 nps 4118881<br>
+info score cp -177 pv e1d1 b1a2 f1f0<br>
+info depth 4 move_no 1 time (microsec) 7352 nodes 26273 nps 3573168<br>
+info score cp -177 pv e1d1 d6d5 e5e4 b1a2<br>
+info depth 4 move_no 19 time (microsec) 9437 nodes 33138 nps 3511277<br>
+info score cp -176 pv g1L b1a0 e5R d6e5<br>
+info depth 5 move_no 1 time (microsec) 20444 nodes 72765 nps 3559196<br>
+info score cp -177 pv g1L b4b3 f1g1 b1a0 f7g7<br>
+info depth 6 move_no 1 time (microsec) 85969 nodes 309444 nps 3599458<br>
+info score cp -176 pv g1L b1a0 e5e4 d6U e4e5 d6e5<br>
+info depth 7 move_no 1 time (microsec) 231161 nodes 885458 nps 3830466<br>
+info score cp -180 pv g1L b1a0 e5e4 d6U e4e5 b4b3 g1g2<br>
+info depth 7 move_no 41 time (microsec) 724825 nodes 2759351 nps 3806917<br>
+info score cp -178 pv e5e6 d7c7 g1L b4b3 f1g1 b1a0 f7g7<br>
+bestmove e5e6<br>
+info depth 1 move_no 1 time (microsec) 35 nodes 80 nps 2227791<br>
+info score cp -128 pv g1h1<br>
+info depth 1 move_no 2 time (microsec) 80 nodes 159 nps 1974909<br>
+info score cp -127 pv e6L<br>
+info depth 1 move_no 39 time (microsec) 171 nodes 362 nps 2110098<br>
+info score cp -126 pv e6e5<br>
+info depth 2 move_no 1 time (microsec) 286 nodes 620 nps 2160896<br>
+info score cp -177 pv e6e5 b1a2<br>
+info depth 2 move_no 22 time (microsec) 428 nodes 929 nps 2169739<br>
+info score cp -175 pv g1L b1a0<br>
+info depth 3 move_no 1 time (microsec) 693 nodes 1965 nps 2834217<br>
+info score cp -180 pv g1L b1a0 g1g2<br>
+info depth 3 move_no 2 time (microsec) 1486 nodes 5256 nps 3534657<br>
+info score cp -179 pv e6e5 b1a0 e5e4<br>
+info depth 3 move_no 49 time (microsec) 2787 nodes 9976 nps 3578850<br>
+info score cp -178 pv e1d1 b1a2 f1f0<br>
+info depth 4 move_no 1 time (microsec) 7620 nodes 26840 nps 3521936<br>
+info score cp -176 pv e1d1 b5c5 g1L b1a0<br>
+info depth 5 move_no 1 time (microsec) 42066 nodes 170627 nps 4056148<br>
+info score cp -179 pv e1d1 b4b3 e6e5 b1a0 e5e4<br>
+info depth 5 move_no 3 time (microsec) 43970 nodes 177574 nps 4038525<br>
+info score cp -178 pv g1L b4b3 f1g1 b1a0 f7g7<br>
+info depth 6 move_no 1 time (microsec) 115796 nodes 454420 nps 3924300<br>
+info score cp -177 pv g1L b1a0 e6d6 e6e5 d6e6 b5c4<br>
+info depth 7 move_no 1 time (microsec) 393004 nodes 1524345 nps 3878698<br>
+info score cp -180 pv g1L b4b3 e6e7 d6d5 e7d6 b1a0 d6d5<br>
+bestmove g1L<br>
+info depth 1 move_no 1 time (microsec) 35 nodes 80 nps 2274340<br>
+info score cp -128 pv g1h2<br>
+info depth 1 move_no 5 time (microsec) 98 nodes 167 nps 1694055<br>
+info score cp -127 pv e6U<br>
+info depth 1 move_no 11 time (microsec) 141 nodes 253 nps 1786041<br>
+info score cp -126 pv e6e5<br>
+info depth 2 move_no 1 time (microsec) 280 nodes 583 nps 2075279<br>
+info score cp -174 pv e6e5 b1a0<br>
+info depth 3 move_no 1 time (microsec) 873 nodes 2991 nps 3424979<br>
+info score cp -179 pv e6e5 b1a0 e5d4<br>
+info depth 4 move_no 1 time (microsec) 2934 nodes 10215 nps 3480498<br>
+info score cp -176 pv e6e5 b1a0 g1U d6e5<br>
+info depth 5 move_no 1 time (microsec) 30171 nodes 131904 nps 4371808<br>
+info score cp -180 pv e6e5 b1a0 g1g2 d6e5 d6d5<br>
+info depth 6 move_no 1 time (microsec) 76799 nodes 316419 nps 4120086<br>
+info score cp -185 pv e6e5 b1a0 g1g2 c7L e5e4 a7a6<br>
+info depth 6 move_no 9 time (microsec) 210455 nodes 842521 nps 4003318<br>
+info score cp -182 pv f7f6 b1a0 f6g6 d6e6 f1g1 c7d6<br>
+info depth 6 move_no 14 time (microsec) 240736 nodes 942208 nps 3913856<br>
+info score cp -176 pv e6e7 d6d5 e7d6 b1a0 d6e5 d5e4<br>
+info depth 7 move_no 1 time (microsec) 434099 nodes 1744441 nps 4018528<br>
+info score cp -180 pv e6e7 d6d5 f1g1 b1a0 e1e2 a7a6 g1f2<br>
+bestmove e6e7<br>
+info depth 1 move_no 1 time (microsec) 26 nodes 60 nps 2252590<br>
+info score cp -129 pv g1L<br>
+info depth 1 move_no 13 time (microsec) 86 nodes 153 nps 1766050<br>
+info score cp -128 pv e7e6<br>
+info depth 2 move_no 1 time (microsec) 214 nodes 423 nps 1974412<br>
+info score cp -176 pv e7e6 b1a0<br>
+info depth 3 move_no 1 time (microsec) 405 nodes 865 nps 2135259<br>
+info score cp -181 pv e7e6 b1a0 g1g2<br>
+info depth 4 move_no 1 time (microsec) 3583 nodes 9668 nps 2697924<br>
+info score cp -176 pv e7e6 b1a0 g1g2 d5e4<br>
+info depth 5 move_no 1 time (microsec) 23376 nodes 95690 nps 4093426<br>
+info score cp -181 pv e7e6 b1a0 g1g2 d5e4 e6e5<br>
+info depth 6 move_no 1 time (microsec) 70293 nodes 272377 nps 3874857<br>
+info score cp -179 pv e7e6 b1a0 e6d7 a7a6 f7R d5e6 c7U<br>
+info depth 6 move_no 9 time (microsec) 220996 nodes 832104 nps 3765233<br>
+info score cp -177 pv e7d7 b3c4 d7d6 b1a0 d6e5 d5e4<br>
+info depth 7 move_no 1 time (microsec) 568582 nodes 2237556 nps 3935321<br>
+info score cp -182 pv e7d7 d5U d7e7 d5e4 g1g2 b1a0 e7e6<br>
+info depth 7 move_no 2 time (microsec) 678287 nodes 2654620 nps 3913709<br>
+info score cp -180 pv e7e6 b1a0 g1g2 d5e4 e6e5 e4U e5e4<br>
+bestmove e7e6<br>
+info depth 1 move_no 1 time (microsec) 27 nodes 55 nps 2031918<br>
+info score cp -31999 pv f1g2 b3a2<br>
+info depth 1 move_no 4 time (microsec) 71 nodes 114 nps 1593825<br>
+info score cp -182 pv e6d6<br>
+info depth 1 move_no 8 time (microsec) 95 nodes 172 nps 1799050<br>
+info score cp -181 pv e6e5<br>
+info depth 1 move_no 22 time (microsec) 136 nodes 242 nps 1770610<br>
+info score cp -180 pv e6d5<br>
+info depth 2 move_no 1 time (microsec) 258 nodes 531 nps 2052554<br>
+info score cp -175 pv e6d5 e6e5<br>
+info depth 3 move_no 1 time (microsec) 1215 nodes 4772 nps 3925559<br>
+info score cp -229 pv e6d5 b5a5 f7e6 d5L<br>
+info depth 3 move_no 2 time (microsec) 1537 nodes 5800 nps 3771231<br>
+info score cp -180 pv e6e5 b5b6 g1L<br>
+info depth 4 move_no 1 time (microsec) 3969 nodes 12311 nps 3101487<br>
+info score cp -176 pv e6e5 b5b6 g1L b6c5<br>
+info depth 5 move_no 1 time (microsec) 20621 nodes 71699 nps 3476980<br>
+info score cp -180 pv e6e5 d5e5 g1g2 e5e4 d5d4<br>
+info depth 6 move_no 1 time (microsec) 87850 nodes 323002 nps 3676719<br>
+info score cp -185 pv e6e5 d5e4 g1g2 b5b6 e5e4 a7a6<br>
+info depth 6 move_no 8 time (microsec) 186870 nodes 708767 nps 3792832<br>
+info score cp -183 pv e1L b5b6 f7g6 d5e4 f1g1 b6c5<br>
+info depth 7 move_no 1 time (microsec) 605216 nodes 2209350 nps 3650514<br>
+info score cp -181 pv e1L d5e4 g1g2 e4e3 e6e5 c7d7 e5e4<br>
+info depth 7 move_no 2 time (microsec) 751879 nodes 2759976 nps 3670767<br>
+info score cp -180 pv e6e5 d5e4 g1g2 b5b6 e5e4 e5d4 g2g3<br>
+bestmove e6e5<br>
+info depth 1 move_no 1 time (microsec) 27 nodes 55 nps 2013324<br>
+info score cp -180 pv e5d4<br>
+info depth 2 move_no 1 time (microsec) 191 nodes 428 nps 2235769<br>
+info score cp -186 pv e5d4 a7a6<br>
+info depth 2 move_no 11 time (microsec) 375 nodes 927 nps 2466435<br>
+info score cp -177 pv e5d6 b6c5<br>
+info depth 2 move_no 32 time (microsec) 478 nodes 1130 nps 2361447<br>
+info score cp -176 pv e5d5 b6c5<br>
+info depth 3 move_no 1 time (microsec) 1185 nodes 4294 nps 3621406<br>
+info score cp -181 pv e5d5 b6c5 g1g2<br>
+info depth 3 move_no 33 time (microsec) 3116 nodes 11106 nps 3563766<br>
+info score cp -180 pv g1R d5e4 e5e4<br>
+info depth 4 move_no 1 time (microsec) 6986 nodes 23417 nps 3351763<br>
+info score cp -186 pv g1R c7L e5e4 a7a6<br>
+info depth 4 move_no 3 time (microsec) 12854 nodes 44560 nps 3466472<br>
+info score cp -184 pv e5d6 b3R g1f2 a7a6<br>
+info depth 4 move_no 50 time (microsec) 28747 nodes 103797 nps 3610682<br>
+info score cp -183 pv e1L b3R g1f2 a7a6<br>
+info depth 5 move_no 1 time (microsec) 51294 nodes 187933 nps 3663837<br>
+info score cp -180 pv e1L c7L g1g2 b6b5 e5e4<br>
+info depth 6 move_no 1 time (microsec) 118229 nodes 439319 nps 3715824<br>
+info score cp -186 pv e1L d5d4 g1g2 d4d3 e5e4 a7a6<br>
+info depth 6 move_no 18 time (microsec) 272875 nodes 1042316 nps 3819755<br>
+info score cp -184 pv f1g1 b6a5 f7R e1L f7f6 a5b5 e5e4<br>
+info depth 7 move_no 1 time (microsec) 917143 nodes 3563142 nps 3885044<br>
+info score cp -179 pv f1g1 b6a5 f7R e1L f7f6 a5b5 e5e4 b3c3<br>
+bestmove f1g1<br>
+info depth 1 move_no 1 time (microsec) 28 nodes 55 nps 1943738<br>
+info score cp -178 pv f7g7<br>
+info depth 2 move_no 1 time (microsec) 134 nodes 195 nps 1451584<br>
+info score cp -240 pv f7g7 b6a5<br>
+info depth 2 move_no 2 time (microsec) 276 nodes 670 nps 2418833<br>
+info score cp -192 pv e1f2 a7a6<br>
+info depth 2 move_no 18 time (microsec) 481 nodes 1360 nps 2825827<br>
+info score cp -177 pv f1g1 b6c5<br>
+info depth 3 move_no 1 time (microsec) 921 nodes 2951 nps 3203934<br>
+info score cp -181 pv f1g1 b6b5 g1g2<br>
+info depth 3 move_no 21 time (microsec) 1558 nodes 4908 nps 3150190<br>
+info score cp -180 pv e5f6 b6b5 f7g7<br>
+info depth 3 move_no 26 time (microsec) 1700 nodes 5249 nps 3086779<br>
+info score cp -179 pv e5f5 d4e4 f7g7<br>
+info depth 4 move_no 1 time (microsec) 2374 nodes 6992 nps 2944484<br>
+info score cp -182 pv e5f5 d4e4 f7g6 b3c3<br>
+info depth 5 move_no 1 time (microsec) 20498 nodes 61920 nps 3020780<br>
+info score cp -179 pv e5f5 b6b5 f7g7 b3c4 f1e2<br>
+info depth 6 move_no 1 time (microsec) 102363 nodes 363700 nps 3553037<br>
+info score cp -182 pv e5f5 c7d6 f7g7 d6e7 g7f6 b6c5<br>
+info depth 7 move_no 1 time (microsec) 658014 nodes 2471432 nps 3755893<br>
+info score cp -177 pv e5f5 c7d7 f7g7 d4d3 f1f2 d7e7 f5e4<br>
+bestmove e5f5<br>
+info depth 1 move_no 1 time (microsec) 33 nodes 65 nps 1928441<br>
+info score cp -187 pv f1R<br>
+info depth 1 move_no 25 time (microsec) 87 nodes 143 nps 1639739<br>
+info score cp -186 pv f5e4<br>
+info depth 1 move_no 26 time (microsec) 117 nodes 199 nps 1698894<br>
+info score cp -179 pv f7g7<br>
+info depth 2 move_no 1 time (microsec) 366 nodes 1008 nps 2747065<br>
+info score cp -174 pv f7g7 b6c5<br>
+info depth 3 move_no 1 time (microsec) 780 nodes 2334 nps 2991494<br>
+info score cp -178 pv f7g7 b6b5 e1e2<br>
+info depth 4 move_no 1 time (microsec) 3354 nodes 9186 nps 2738816<br>
+info score cp -174 pv f7g7 d4U e1f2 b6c5<br>
+info depth 5 move_no 1 time (microsec) 17127 nodes 58127 nps 3393820<br>
+info score cp -177 pv f7g7 d4U f1f2 d7e7 f5e4<br>
+info depth 6 move_no 1 time (microsec) 62148 nodes 218267 nps 3512020<br>
+info score cp -184 pv f7g7 d4U f1f2 a7a6 g7g6 d7e6<br>
+info depth 6 move_no 16 time (microsec) 217728 nodes 786008 nps 3610033<br>
+info score cp -183 pv f1f2 d7e7 f7g6 a7a6 f5e4 e7e6<br>
+info depth 7 move_no 1 time (microsec) 894465 nodes 3197455 nps 3574710<br>
+info score cp -177 pv f1f2 d4L f7e6 b3b4 g1g2 d7e6 d7d6<br>
+bestmove f1f2<br>
+info depth 1 move_no 1 time (microsec) 32 nodes 66 nps 2018720<br>
+info score cp -187 pv f2f1<br>
+info depth 1 move_no 2 time (microsec) 77 nodes 124 nps 1598226<br>
+info score cp -186 pv f7f6<br>
+info depth 1 move_no 4 time (microsec) 100 nodes 180 nps 1787682<br>
+info score cp -185 pv f5e4<br>
+info depth 1 move_no 12 time (microsec) 150 nodes 301 nps 2004381<br>
+info score cp -178 pv g1g2<br>
+info depth 2 move_no 1 time (microsec) 362 nodes 928 nps 2560240<br>
+info score cp -184 pv g1g2 a7a6<br>
+info depth 2 move_no 3 time (microsec) 512 nodes 1280 nps 2499951<br>
+info score cp -181 pv f7f6 d7e6<br>
+info depth 3 move_no 1 time (microsec) 1887 nodes 6831 nps 3619889<br>
+info score cp -178 pv f7f6 d7e6 g1g2<br>
+info depth 3 move_no 2 time (microsec) 2749 nodes 9486 nps 3449936<br>
+info score cp -177 pv g1g2 d7d6 f7e6<br>
+info depth 3 move_no 15 time (microsec) 3584 nodes 11333 nps 3161513<br>
+info score cp -176 pv f7g7 e3f4 f5f4<br>
+info depth 4 move_no 1 time (microsec) 6713 nodes 17631 nps 2626128<br>
+info score cp -180 pv f7g7 e3f4 g7f6 d7e6<br>
+info depth 5 move_no 1 time (microsec) 49616 nodes 179274 nps 3613200<br>
+info score cp -176 pv f7g7 e3f2 f5f4 b6b5 e3e4<br>
+info depth 6 move_no 1 time (microsec) 126038 nodes 436461 nps 3462931<br>
+info score cp -180 pv f7g7 e3f2 e3f3 d7e7 g7g6 f2e3<br>
+info depth 7 move_no 1 time (microsec) 382484 nodes 1372520 nps 3588437<br>
+info score cp -184 pv f7g7 e3f2 e3f3 f2f1 e1f1 e1U g7f6<br>
+info depth 7 move_no 36 time (microsec) 1785444 nodes 6216704 nps 3481880<br>
+info score cp -179 pv e1L d7e6 f5f6 e3f2 e3d2 f2e3 g1g2<br>
+bestmove e1L<br>
+info depth 1 move_no 1 time (microsec) 32 nodes 56 nps 1737457<br>
+info score cp -185 pv e3f3<br>
+info depth 1 move_no 3 time (microsec) 94 nodes 177 nps 1875575<br>
+info score cp -184 pv f5f4<br>
+info depth 2 move_no 1 time (microsec) 503 nodes 1521 nps 3021250<br>
+info score cp -190 pv f5f4 a7a6<br>
+info depth 3 move_no 1 time (microsec) 2512 nodes 8805 nps 3504710<br>
+info score cp -184 pv f5f4 d7e6 f7f6<br>
+info depth 4 move_no 1 time (microsec) 11206 nodes 36379 nps 3246367<br>
+info score cp -189 pv f5f4 f2f1 e1R a7a6<br>
+info depth 4 move_no 2 time (microsec) 12468 nodes 39107 nps 3136447<br>
+info score cp -179 pv e3f3 f2U f7f6 f2f3<br>
+info depth 5 move_no 1 time (microsec) 42021 nodes 140458 nps 3342498<br>
+info score cp -184 pv e3f3 f2f1 e1f1 e1U f7e6<br>
+info depth 6 move_no 1 time (microsec) 100130 nodes 324400 nps 3239758<br>
+info score cp -183 pv e3f3 f2U f3f2 d7d6 f7g6 a7a6<br>
+info depth 7 move_no 1 time (microsec) 317082 nodes 1024293 nps 3230363<br>
+info score cp -341 pv e3f3 f2f1 e1f1 e1U f7f6 e1f1 e1e0 e0U<br>
+bestmove e3f3<br>
+info depth 1 move_no 1 time (microsec) 29 nodes 55 nps 1860307<br>
+info score cp -200 pv g1h1<br>
+info depth 1 move_no 2 time (microsec) 61 nodes 110 nps 1795713<br>
+info score cp -184 pv f5R<br>
+info depth 1 move_no 8 time (microsec) 100 nodes 199 nps 1987734<br>
+info score cp -183 pv f5e4<br>
+info depth 1 move_no 47 time (microsec) 203 nodes 454 nps 2227772<br>
+info score cp -176 pv f7g7<br>
+info depth 1 move_no 50 time (microsec) 229 nodes 501 nps 2186837<br>
+info score cp -171 pv g1L<br>
+info depth 2 move_no 1 time (microsec) 534 nodes 1186 nps 2218821<br>
+info score cp -121 pv g1L a0b1<br>
+info depth 3 move_no 1 time (microsec) 1645 nodes 4082 nps 2481204<br>
+info score cp -303 pv g1L a7b6 g1h1 f3L<br>
+info depth 3 move_no 24 time (microsec) 3603 nodes 10401 nps 2886171<br>
+info score cp -186 pv f3f2 f1U f2f1<br>
+info depth 3 move_no 42 time (microsec) 4640 nodes 13481 nps 2904791<br>
+info score cp -184 pv e1f1 e1U f7f6<br>
+info depth 4 move_no 1 time (microsec) 7259 nodes 19369 nps 2668008<br>
+info score cp -182 pv e1f1 a7a6 f7g6 d7e6<br>
+info depth 5 move_no 1 time (microsec) 20711 nodes 54290 nps 2621217<br>
+info score cp -341 pv e1f1 e1U f7f6 e1f1 e1e0 e0U<br>
+info depth 6 move_no 1 time (microsec) 48833 nodes 135296 nps 2770545<br>
+info score cp -359 pv e1f1 e1U f7f6 e1f1 g1h1 b6a5 h1L a0R<br>
+info depth 7 move_no 1 time (microsec) 76186 nodes 208122 nps 2731738<br>
+info score cp -31991 pv e1f1 e1U g1U b6a5 g1h2 a5b4 h2h1 e1d0 h1U a0a1<br>
+info depth 8 move_no 1 time (microsec) 109249 nodes 318380 nps 2914258<br>
+info score cp -31993 pv e1f1 e1U g1U b6a5 g1h2 e1R h2R e1f2<br>
+info depth 9 move_no 1 time (microsec) 203188 nodes 662237 nps 3259219<br>
+info score cp -31993 pv e1f1 e1U g1U b6a5 g1h2 e1R h2R e1f2<br>
+info depth 10 move_no 1 time (microsec) 524586 nodes 1937477 nps 3693343<br>
+info score cp -31993 pv e1f1 e1U g1U b6a5 g1h2 e1R h2R e1f2<br>
+bestmove e1f1<br>
+info depth 1 move_no 1 time (microsec) 32 nodes 55 nps 1688358<br>
+info score cp -31999 pv f1L e1f0<br>
+info depth 1 move_no 2 time (microsec) 77 nodes 114 nps 1464466<br>
+info score cp -185 pv f7U<br>
+info depth 1 move_no 26 time (microsec) 278 nodes 564 nps 2024095<br>
+info score cp -184 pv f7f6<br>
+info depth 2 move_no 1 time (microsec) 446 nodes 836 nps 1870559<br>
+info score cp -179 pv f7f6 e1d2<br>
+info depth 3 move_no 1 time (microsec) 1886 nodes 5503 nps 2917789<br>
+info score cp -365 pv f7f6 e1f1 g1h1 b6a5 h1L<br>
+info depth 4 move_no 1 time (microsec) 4900 nodes 14620 nps 2983562<br>
+info score cp -359 pv f7f6 e1f1 g1h1 b6a5 h1L a0b0<br>
+info depth 5 move_no 1 time (microsec) 6405 nodes 19059 nps 2975532<br>
+info score cp -31995 pv f7f6 e1f1 g1h1 f1g0 e1f1 g0h1<br>
+info depth 6 move_no 1 time (microsec) 8002 nodes 24696 nps 3085946<br>
+info score cp -31995 pv f7f6 e1f1 g1h1 f1g0 e1f1 g0h1<br>
+info depth 7 move_no 1 time (microsec) 15939 nodes 51007 nps 3200126<br>
+info score cp -31995 pv f7f6 e1f1 g1h1 f1g0 e1f1 g0h1<br>
+info depth 8 move_no 1 time (microsec) 45972 nodes 164161 nps 3570860<br>
+info score cp -31995 pv f7f6 e1f1 g1h1 f1g0 e1f1 g0h1<br>
+info depth 9 move_no 1 time (microsec) 165680 nodes 640098 nps 3863439<br>
+info score cp -31995 pv f7f6 e1f1 g1h1 f1g0 e1f1 g0h1<br>
+info depth 10 move_no 1 time (microsec) 681060 nodes 2798157 nps 4108531<br>
+info score cp -31995 pv f7f6 e1f1 g1h1 f1g0 e1f1 g0h1<br>
+bestmove f7f6<br>
+info depth 1 move_no 1 time (microsec) 32 nodes 55 nps 1690382<br>
+info score cp -31999 pv f5e6 f1g0<br>
+info depth 1 move_no 2 time (microsec) 155 nodes 434 nps 2791984<br>
+info score cp -365 pv g1h1 b6a5 h1L<br>
+info depth 1 move_no 10 time (microsec) 252 nodes 594 nps 2352596<br>
+info score cp -341 pv e1d0 d0L<br>
+info depth 2 move_no 1 time (microsec) 617 nodes 1247 nps 2018070<br>
+info score cp -470 pv e1d0 d0L g1h1 a7b7<br>
+info depth 2 move_no 2 time (microsec) 882 nodes 2022 nps 2291160<br>
+info score cp -359 pv g1h1 b6a5 h1L a0R<br>
+info depth 3 move_no 1 time (microsec) 1513 nodes 3668 nps 2423845<br>
+info score cp -31997 pv g1h1 f1g0 e1f1 g0h1<br>
+info depth 4 move_no 1 time (microsec) 2519 nodes 6107 nps 2423522<br>
+info score cp -31997 pv g1h1 f1g0 e1f1 g0h1<br>
+info depth 5 move_no 1 time (microsec) 4365 nodes 12561 nps 2877399<br>
+info score cp -31997 pv g1h1 f1g0 e1f1 g0h1<br>
+info depth 6 move_no 1 time (microsec) 9349 nodes 31101 nps 3326470<br>
+info score cp -31997 pv g1h1 f1g0 e1f1 g0h1<br>
+info depth 7 move_no 1 time (microsec) 29491 nodes 106627 nps 3615465<br>
+info score cp -31997 pv g1h1 f1g0 e1f1 g0h1<br>
+info depth 8 move_no 1 time (microsec) 109979 nodes 431928 nps 3927351<br>
+info score cp -31997 pv g1h1 f1g0 e1f1 g0h1<br>
+info depth 9 move_no 1 time (microsec) 433608 nodes 1770280 nps 4082671<br>
+info score cp -31997 pv g1h1 f1g0 e1f1 g0h1<br>
+bestmove g1h1<br>
+info depth 1 move_no 1 time (microsec) 38 nodes 94 nps 2423741<br>
+info score cp -31999 pv e1U g0h1<br>
+info depth 2 move_no 1 time (microsec) 295 nodes 249 nps 841895<br>
+info score cp -31999 pv e1U g0h1<br>
+info depth 3 move_no 1 time (microsec) 499 nodes 455 nps 911171<br>
+info score cp -31999 pv e1U g0h1<br>
+info depth 4 move_no 1 time (microsec) 766 nodes 870 nps 1135490<br>
+info score cp -31999 pv e1U g0h1<br>
+info depth 5 move_no 1 time (microsec) 1551 nodes 3714 nps 2393147<br>
+info score cp -31999 pv e1U g0h1<br>
+info depth 6 move_no 1 time (microsec) 3540 nodes 12445 nps 3515500<br>
+info score cp -31999 pv e1U g0h1<br>
+info depth 7 move_no 1 time (microsec) 12404 nodes 47086 nps 3795856<br>
+info score cp -31999 pv e1U g0h1<br>
+info depth 8 move_no 1 time (microsec) 52325 nodes 207995 nps 3974992<br>
+info score cp -31999 pv e1U g0h1<br>
+info depth 9 move_no 1 time (microsec) 222303 nodes 955149 nps 4296604<br>
+info score cp -31999 pv e1U g0h1<br>
+info depth 10 move_no 1 time (microsec) 787184 nodes 3305604 nps 4199276<br>
+info score cp -31999 pv e1U g0h1<br>
+bestmove e1U<br>
+EOL5672<br>
+</div>
+      <hr>
+      <div id="monitor-black">/scratch/6172_game_server/games/game_690312<br>
+cunqueim.testing<br>
+/scratch/6172_game_server/games/game_690312<br>
+<br>
+BOL5672<br>
+mid:S<br>
+id name Leiserchess version 1038<br>
+id author Don Dailey, Charles E. Leiserson, and the staff of MIT 6.172<br>
+option name hattack type spin value 900 default 900 min 0 max 10000<br>
+option name mobility type spin value 400 default 400 min 0 max 10000<br>
+option name kaggressive type spin value 26000 default 26000 min 0 max 30000<br>
+option name kface type spin value 5000 default 5000 min 0 max 10000<br>
+option name pawnpin type spin value 4000 default 4000 min 0 max 10000<br>
+option name pbetween type spin value 2000 default 2000 min -10000 max 10000<br>
+option name pcentral type spin value 500 default 500 min -10000 max 10000<br>
+option name hash type spin value 16 default 16 min 1 max 4096<br>
+option name draw type spin value -7 default -7 min -100 max 100<br>
+option name randomize type spin value 0 default 0 min 0 max 10000<br>
+option name reset_rng type spin value 0 default 0 min 0 max 1<br>
+option name lmr_r1 type spin value 5 default 5 min 1 max 256<br>
+option name lmr_r2 type spin value 20 default 20 min 1 max 256<br>
+option name hmb type spin value 3 default 3 min 0 max 100<br>
+option name fut_depth type spin value 3 default 3 min 0 max 5<br>
+option name use_nmm type spin value 1 default 1 min 0 max 1<br>
+option name detect_draws type spin value 1 default 1 min 0 max 1<br>
+option name use_tt type spin value 1 default 1 min 0 max 1<br>
+option name use_ko type spin value 1 default 1 min 0 max 1<br>
+option name trace_moves type spin value 0 default 0 min 0 max 1<br>
+uciok<br>
+readyok<br>
+<span class="dark">info</span> depth 1 move_no 1 time (microsec) 59 nodes 146 nps 2473402<br>
+info score cp -204 pv e5e4 h5R<br>
+info depth 1 move_no 5 time (microsec) 235 nodes 893 nps 3794687<br>
+info score cp -185 pv a3R h5R a3a2 h5h6<br>
+info depth 1 move_no 19 time (microsec) 361 nodes 1531 nps 4234838<br>
+info score cp -3 pv e5U<br>
+info depth 2 move_no 1 time (microsec) 704 nodes 2503 nps 3554251<br>
+info score cp -15 pv e5U h5g6<br>
+info depth 2 move_no 53 time (microsec) 1689 nodes 6863 nps 4062475<br>
+info score cp -5 pv b4R h5h6<br>
+info depth 3 move_no 1 time (microsec) 3304 nodes 14263 nps 4316518<br>
+info score cp -3 pv b4R h5h6 b4a5<br>
+info depth 4 move_no 1 time (microsec) 10407 nodes 38254 nps 3675749<br>
+info score cp -5 pv b4R h5h6 b4a5 h6h7<br>
+info depth 5 move_no 1 time (microsec) 61538 nodes 273116 nps 4438110<br>
+info score cp -11 pv b4R h5h6 b4a5 h6h7 e7R<br>
+info depth 6 move_no 1 time (microsec) 203800 nodes 864780 nps 4243272<br>
+info score cp -12 pv b4R h5h6 a7L g3R d6L h6g5 d6d7 h0g1<br>
+info depth 7 move_no 1 time (microsec) 861847 nodes 3609403 nps 4187981<br>
+info score cp -2 pv b4R h5h6 d6U h6h7 e7U g3R a3b2<br>
+<span class="dark">bestmove</span> b4R<br>
+info depth 1 move_no 1 time (microsec) 52 nodes 168 nps 3191609<br>
+info score cp -393 pv e7e6 h6R<br>
+info depth 1 move_no 2 time (microsec) 101 nodes 314 nps 3088484<br>
+info score cp -230 pv b4U h6R<br>
+info depth 1 move_no 4 time (microsec) 156 nodes 519 nps 3310603<br>
+info score cp -229 pv c5d4 h6R<br>
+info depth 1 move_no 22 time (microsec) 512 nodes 2109 nps 4117411<br>
+info score cp -11 pv d6U<br>
+info depth 1 move_no 61 time (microsec) 632 nodes 2640 nps 4173860<br>
+info score cp -10 pv d6d5<br>
+info depth 1 move_no 68 time (microsec) 676 nodes 2783 nps 4115786<br>
+info score cp -3 pv b4a5<br>
+info depth 2 move_no 1 time (microsec) 833 nodes 3310 nps 3969476<br>
+info score cp -5 pv b4a5 h6h7<br>
+info depth 3 move_no 1 time (microsec) 2326 nodes 9930 nps 4268580<br>
+info score cp -11 pv b4a5 h6h7 e7R<br>
+info depth 4 move_no 1 time (microsec) 12288 nodes 43979 nps 3578881<br>
+info score cp -14 pv b4a5 g3R c3d2 g3h3<br>
+info depth 4 move_no 3 time (microsec) 13710 nodes 49993 nps 3646262<br>
+info score cp -13 pv d6U h6h7 e7U g3R<br>
+info depth 4 move_no 46 time (microsec) 20764 nodes 75242 nps 3623581<br>
+info score cp -12 pv a7L g3R d6L h0g1 d6d7 h6g5<br>
+info depth 5 move_no 1 time (microsec) 38211 nodes 155931 nps 4080739<br>
+info score cp -17 pv a7L g3R d6L h0g1 d6d7 h6g5 b4c4<br>
+info depth 5 move_no 2 time (microsec) 47819 nodes 192749 nps 4030734<br>
+info score cp -2 pv d6U h6h7 e7U g3R a3b2<br>
+info depth 6 move_no 1 time (microsec) 148271 nodes 610131 nps 4114964<br>
+info score cp 3 pv d6U h6h7 e7U g3R a3b2 d2d3<br>
+info depth 7 move_no 1 time (microsec) 784569 nodes 3082914 nps 3929431<br>
+info score cp 1 pv d6U h6h7 e7U g3R a3b3 d0d1 a7a6<br>
+bestmove d6U<br>
+info depth 1 move_no 1 time (microsec) 58 nodes 181 nps 3111141<br>
+info score cp 7 pv a3b3<br>
+info depth 2 move_no 1 time (microsec) 510 nodes 2141 nps 4192326<br>
+info score cp 3 pv a3b3 h6g6<br>
+info depth 3 move_no 1 time (microsec) 2954 nodes 13224 nps 4476484<br>
+info score cp -2 pv a3b3 h6g6 e7f6<br>
+info depth 3 move_no 72 time (microsec) 9026 nodes 32970 nps 3652564<br>
+info score cp 7 pv c3d4 f4e3 a3b2<br>
+info depth 4 move_no 1 time (microsec) 14097 nodes 52443 nps 3719983<br>
+info score cp 3 pv c3d4 f4e3 a3b2 h6g6<br>
+info depth 5 move_no 1 time (microsec) 122708 nodes 533385 nps 4346781<br>
+info score cp -2 pv c3d4 f4e3 a3b2 h6g6 e7f6<br>
+info depth 6 move_no 1 time (microsec) 338136 nodes 1363856 nps 4033445<br>
+info score cp 3 pv c3d4 f4e3 a3b3 h6g6 b4b3 g6f5<br>
+info depth 7 move_no 1 time (microsec) 1352232 nodes 5452058 nps 4031895<br>
+info score cp -2 pv c3d4 f4e3 a3b3 h6h7 e7U h7g6 c5c4<br>
+info depth 7 move_no 49 time (microsec) 4375172 nodes 17129660 nps 3915196<br>
+info score cp 0 pv a3b2 h6h7 d6e7 h7g6 e7f6 e1e2 a7a6<br>
+bestmove a3b2<br>
+info depth 1 move_no 1 time (microsec) 43 nodes 147 nps 3348670<br>
+info score cp -31999 pv b4U h7R<br>
+info depth 1 move_no 9 time (microsec) 127 nodes 339 nps 2668471<br>
+info score cp -3 pv d6c7<br>
+info depth 1 move_no 47 time (microsec) 236 nodes 561 nps 2367328<br>
+info score cp -2 pv d6e7<br>
+info depth 2 move_no 1 time (microsec) 369 nodes 844 nps 2287039<br>
+info score cp 3 pv d6e7 h7g6<br>
+info depth 3 move_no 1 time (microsec) 1462 nodes 4810 nps 3289201<br>
+info score cp -2 pv d6e7 h7g6 e7f6<br>
+info depth 3 move_no 63 time (microsec) 3979 nodes 14729 nps 3701458<br>
+info score cp 0 pv e7U f4e3 a7a6<br>
+info depth 4 move_no 1 time (microsec) 12189 nodes 41420 nps 3398102<br>
+info score cp 3 pv e7U f4e3 e5R d2L<br>
+info depth 5 move_no 1 time (microsec) 135306 nodes 564116 nps 4169160<br>
+info score cp 0 pv e7U f4e3 b2R e1U a7a6<br>
+info depth 6 move_no 1 time (microsec) 356183 nodes 1433024 nps 4023271<br>
+info score cp 4 pv e7U f4e3 c5d4 e3L b4a3 e3e4<br>
+info depth 7 move_no 1 time (microsec) 3762643 nodes 14841819 nps 3944518<br>
+info score cp 4 pv e7U f2g2 c5d4 g3h4 b2R g2R a7a6<br>
+bestmove e7U<br>
+info depth 1 move_no 1 time (microsec) 29 nodes 71 nps 2425193<br>
+info score cp -3 pv a7L<br>
+info depth 1 move_no 3 time (microsec) 71 nodes 151 nps 2119744<br>
+info score cp -2 pv b2c2<br>
+info depth 1 move_no 18 time (microsec) 125 nodes 285 nps 2268385<br>
+info score cp 0 pv a7a6<br>
+info depth 2 move_no 1 time (microsec) 295 nodes 711 nps 2404016<br>
+info score cp -14 pv a7a6 h7g6<br>
+info depth 2 move_no 2 time (microsec) 451 nodes 1111 nps 2460250<br>
+info score cp 3 pv b2c2 h7g6<br>
+info depth 3 move_no 1 time (microsec) 4190 nodes 17980 nps 4290294<br>
+info score cp -2 pv b2c2 h7g6 c5d4<br>
+info depth 3 move_no 2 time (microsec) 6008 nodes 25779 nps 4290741<br>
+info score cp 0 pv a7a6 h7g6 e7f6<br>
+info depth 3 move_no 30 time (microsec) 14603 nodes 51197 nps 3505704<br>
+info score cp 1 pv c5U e3f2 a7a6<br>
+info depth 4 move_no 1 time (microsec) 37526 nodes 135433 nps 3609043<br>
+info score cp 4 pv c5U e3e4 c3d4 g3g4<br>
+info depth 5 move_no 1 time (microsec) 335476 nodes 1324533 nps 3948215<br>
+info score cp 17 pv c5U e3e4 b2R e1U b4a5 e4U<br>
+info depth 6 move_no 1 time (microsec) 767474 nodes 3093464 nps 4030704<br>
+info score cp 12 pv c5U e3e4 b2R e1U b4a5 e4L b2b3<br>
+info depth 6 move_no 28 time (microsec) 1659700 nodes 6621064 nps 3989312<br>
+info score cp 51 pv b2R e1U c5d4 e3d4 b2a1 d0U e1R f4f3<br>
+bestmove b2R<br>
+info depth 1 move_no 2 time (microsec) 33 nodes 81 nps 2400142<br>
+info score cp -3 pv b4c3<br>
+info depth 1 move_no 4 time (microsec) 67 nodes 159 nps 2347175<br>
+info score cp -2 pv d6d5<br>
+info depth 1 move_no 72 time (microsec) 152 nodes 340 nps 2231732<br>
+info score cp 0 pv a7a6<br>
+info depth 2 move_no 1 time (microsec) 539 nodes 1840 nps 3411058<br>
+info score cp -14 pv a7a6 h7g6<br>
+info depth 2 move_no 2 time (microsec) 718 nodes 2253 nps 3136987<br>
+info score cp 3 pv d6d5 h7g6<br>
+info depth 2 move_no 52 time (microsec) 2445 nodes 10272 nps 4200242<br>
+info score cp 11 pv d6c5 e3e4 b4a5<br>
+info depth 3 move_no 1 time (microsec) 8283 nodes 29809 nps 3598619<br>
+info score cp 17 pv d6c5 e3e4 b4a5 e4d4<br>
+info depth 3 move_no 66 time (microsec) 11807 nodes 39480 nps 3343554<br>
+info score cp 45 pv c5d4 e3d4 b2a1 d0U e1R<br>
+info depth 4 move_no 1 time (microsec) 13541 nodes 45051 nps 3326895<br>
+info score cp 51 pv c5d4 e3d4 b2a1 d0U e1R f4f3<br>
+info depth 5 move_no 1 time (microsec) 287984 nodes 1102805 nps 3829394<br>
+info score cp 23 pv c5d4 d2L a7a6 g3h4 e7f6<br>
+info depth 6 move_no 1 time (microsec) 1281965 nodes 4986360 nps 3889619<br>
+info score cp 51 pv c5d4 d2L c3R e3d4 b2a1 d0e1 e1L d4L<br>
+bestmove c5d4<br>
+info depth 1 move_no 1 time (microsec) 44 nodes 98 nps 2180345<br>
+info score cp -3 pv d4c5<br>
+info depth 1 move_no 2 time (microsec) 100 nodes 234 nps 2339836<br>
+info score cp -2 pv b2b3<br>
+info depth 1 move_no 4 time (microsec) 132 nodes 313 nps 2365710<br>
+info score cp 1 pv a7a6<br>
+info depth 1 move_no 24 time (microsec) 203 nodes 465 nps 2284540<br>
+info score cp 39 pv a7b6<br>
+info depth 1 move_no 72 time (microsec) 272 nodes 591 nps 2165541<br>
+info score cp 176 pv b4a5<br>
+info depth 2 move_no 1 time (microsec) 605 nodes 1723 nps 2844835<br>
+info score cp 152 pv b4a5 h0g0<br>
+info depth 3 move_no 1 time (microsec) 7031 nodes 29715 nps 4225883<br>
+info score cp -16 pv b4a5 h0g0 d6R e3d4 e5d4<br>
+info depth 3 move_no 2 time (microsec) 15024 nodes 57141 nps 3803126<br>
+info score cp 9 pv a7b6 h0g0 e5L<br>
+info depth 3 move_no 3 time (microsec) 18786 nodes 71775 nps 3820602<br>
+info score cp 23 pv a7a6 g3h4 e7e6<br>
+info depth 4 move_no 1 time (microsec) 57465 nodes 208609 nps 3630141<br>
+info score cp 8 pv a7a6 d0L a6b7 g3h3<br>
+info depth 4 move_no 2 time (microsec) 155601 nodes 562226 nps 3613240<br>
+info score cp 45 pv a7b6 e3L e5L f4e4<br>
+info depth 4 move_no 72 time (microsec) 478976 nodes 1836679 nps 3834587<br>
+info score cp 51 pv c3R e3d4 b2a1 d0U e1R d4L<br>
+info depth 5 move_no 1 time (microsec) 630339 nodes 2419118 nps 3837801<br>
+info score cp 46 pv c3R e3d4 b2a1 d0U e1R d2e3 c3d4<br>
+bestmove c3R<br>
+info depth 1 move_no 1 time (microsec) 62 nodes 171 nps 2738014<br>
+info score cp -2 pv d6e6<br>
+info depth 1 move_no 9 time (microsec) 269 nodes 905 nps 3361525<br>
+info score cp -1 pv d6c5<br>
+info depth 1 move_no 35 time (microsec) 324 nodes 1012 nps 3114948<br>
+info score cp 0 pv e5d4<br>
+info depth 1 move_no 61 time (microsec) 381 nodes 1120 nps 2934648<br>
+info score cp 1 pv a7a6<br>
+info depth 2 move_no 1 time (microsec) 492 nodes 1309 nps 2655608<br>
+info score cp -13 pv a7a6 h7g6<br>
+info depth 2 move_no 2 time (microsec) 823 nodes 2361 nps 2866787<br>
+info score cp 5 pv e5d4 h7g7<br>
+info depth 2 move_no 6 time (microsec) 1211 nodes 3722 nps 3072062<br>
+info score cp 45 pv b2a1 d0U e1R<br>
+info depth 3 move_no 1 time (microsec) 2681 nodes 8526 nps 3180148<br>
+info score cp 51 pv b2a1 d0U e1R d2e3<br>
+info depth 4 move_no 1 time (microsec) 7001 nodes 22123 nps 3159709<br>
+info score cp 46 pv b2a1 d0U e1R d2e3 c3d4<br>
+info depth 4 move_no 68 time (microsec) 397905 nodes 1623200 nps 4079360<br>
+info score cp 60 pv e3f2 d4e5 b4a5 h0g0 a5a4 g0f1<br>
+info depth 5 move_no 1 time (microsec) 544011 nodes 2194587 nps 4034080<br>
+info score cp 58 pv e3f2 d4e5 b4a4 g3g4 d6e5<br>
+bestmove e3f2<br>
+info depth 1 move_no 1 time (microsec) 200 nodes 829 nps 4137552<br>
+info score cp -251 pv b2c1 g3h2 a7b7 d6d7<br>
+info depth 1 move_no 2 time (microsec) 238 nodes 897 nps 3756517<br>
+info score cp 171 pv b4a5<br>
+info depth 2 move_no 1 time (microsec) 551 nodes 2017 nps 3655435<br>
+info score cp 111 pv b4a5 g3h3<br>
+info depth 3 move_no 1 time (microsec) 3762 nodes 15493 nps 4117438<br>
+info score cp 60 pv b4a5 h0g0 a5a4 g0f1<br>
+info depth 4 move_no 1 time (microsec) 5073 nodes 19679 nps 3878520<br>
+info score cp 45 pv b4a5 h0g0 a5a4 g0f1 a4a5<br>
+info depth 4 move_no 20 time (microsec) 89024 nodes 351057 nps 3943353<br>
+info score cp 64 pv b4a4 g3g4 d6e5 f4f3<br>
+info depth 5 move_no 1 time (microsec) 465245 nodes 1776795 nps 3819044<br>
+info score cp 7 pv b4a4 f4R a4a5 h0g0 a5b4 g3f2 b4b3<br>
+info depth 5 move_no 2 time (microsec) 619769 nodes 2374314 nps 3830963<br>
+info score cp 39 pv b4a5 h0g0 a5b5 g3f2 b5a4 f4R<br>
+bestmove b4a5<br>
+info depth 1 move_no 1 time (microsec) 103 nodes 335 nps 3225464<br>
+info score cp -85 pv d4R c3d3<br>
+info depth 1 move_no 5 time (microsec) 400 nodes 1388 nps 3469028<br>
+info score cp 20 pv f2g3 d2e3<br>
+info depth 1 move_no 19 time (microsec) 1110 nodes 4496 nps 4049961<br>
+info score cp 46 pv d4e4 c3U a5a4 g0f1<br>
+info depth 1 move_no 36 time (microsec) 1581 nodes 6547 nps 4140638<br>
+info score cp 60 pv a5a4 g0f1<br>
+info depth 1 move_no 47 time (microsec) 1899 nodes 7860 nps 4137534<br>
+info score cp 75 pv d4e5 d2e3<br>
+info depth 2 move_no 1 time (microsec) 3061 nodes 12768 nps 4169893<br>
+info score cp -3 pv d4e5 d2e3 f2g3 f4U<br>
+info depth 2 move_no 2 time (microsec) 3241 nodes 13213 nps 4076186<br>
+info score cp 37 pv a5a4 g0f1 a4b4<br>
+info depth 3 move_no 1 time (microsec) 6629 nodes 22253 nps 3356877<br>
+info score cp 22 pv a5a4 g0f1 a4b4 d0c1<br>
+info depth 3 move_no 21 time (microsec) 16814 nodes 59909 nps 3562923<br>
+info score cp 39 pv a5b5 g3f2 b5a4 f4R<br>
+info depth 4 move_no 1 time (microsec) 51991 nodes 195286 nps 3756113<br>
+info score cp 9 pv a5b5 g3f2 a7a6 d2d3 e7f6<br>
+info depth 4 move_no 2 time (microsec) 73987 nodes 278024 nps 3757739<br>
+info score cp 34 pv a5a4 g0f0 a4b5 f4e3 a7b6<br>
+info depth 5 move_no 1 time (microsec) 266865 nodes 1006336 nps 3770947<br>
+info score cp 30 pv a5a4 g0f1 a4a5 h7R d6R d0c1<br>
+bestmove a5a4<br>
+info depth 1 move_no 1 time (microsec) 68 nodes 225 nps 3294530<br>
+info score cp -302 pv a4R f4R<br>
+info depth 1 move_no 16 time (microsec) 224 nodes 748 nps 3331358<br>
+info score cp 37 pv a4b3<br>
+info depth 1 move_no 48 time (microsec) 320 nodes 922 nps 2879018<br>
+info score cp 45 pv a4a5<br>
+info depth 2 move_no 1 time (microsec) 647 nodes 2066 nps 3189132<br>
+info score cp -36 pv a4a5 g3f3<br>
+info depth 2 move_no 2 time (microsec) 767 nodes 2345 nps 3055338<br>
+info score cp 22 pv a4b3 d0c1<br>
+info depth 3 move_no 1 time (microsec) 3370 nodes 12904 nps 3828751<br>
+info score cp 17 pv a4b3 d0c1 e7f6<br>
+info depth 3 move_no 60 time (microsec) 4991 nodes 19678 nps 3942312<br>
+info score cp 37 pv a4b5 d0c1 a7b7<br>
+info depth 4 move_no 1 time (microsec) 13672 nodes 50637 nps 3703687<br>
+info score cp 23 pv a4b5 d2L c3d3 d0c1<br>
+info depth 4 move_no 3 time (microsec) 20069 nodes 75774 nps 3775488<br>
+info score cp 30 pv a4a5 h7R d6R d0d1<br>
+info depth 5 move_no 1 time (microsec) 139728 nodes 534543 nps 3825571<br>
+info score cp 32 pv a4a5 g3f3 a5b5 f1g1 b5a4<br>
+info depth 6 move_no 1 time (microsec) 548057 nodes 2203096 nps 4019827<br>
+info score cp 21 pv a4a5 h7U d6R d0d1 c3d3 f4e4<br>
+bestmove a4a5<br>
+info depth 1 move_no 1 time (microsec) 125 nodes 479 nps 3827712<br>
+info score cp -249 pv b2U c3d3<br>
+info depth 1 move_no 2 time (microsec) 203 nodes 663 nps 3263421<br>
+info score cp -50 pv a5b4<br>
+info depth 1 move_no 4 time (microsec) 247 nodes 752 nps 3038322<br>
+info score cp -33 pv a5a4<br>
+info depth 2 move_no 1 time (microsec) 708 nodes 2205 nps 3112709<br>
+info score cp 38 pv a5a4 f3e3<br>
+info depth 3 move_no 1 time (microsec) 1304 nodes 4073 nps 3121737<br>
+info score cp -31997 pv a5a4 f1e0 a4a3 e7R<br>
+info depth 3 move_no 2 time (microsec) 1761 nodes 5744 nps 3260511<br>
+info score cp 16 pv a5b4 f3e3 e7f6<br>
+info depth 3 move_no 49 time (microsec) 3475 nodes 11593 nps 3335291<br>
+info score cp 32 pv a5b5 f1g1 b5a4<br>
+info depth 4 move_no 1 time (microsec) 4736 nodes 15997 nps 3377178<br>
+info score cp 37 pv a5b5 f1g1 b5a4 f4e4<br>
+info depth 5 move_no 1 time (microsec) 47567 nodes 179485 nps 3773306<br>
+info score cp 18 pv a5b5 f1g1 e7f6 d2d3 a7a6<br>
+info depth 6 move_no 1 time (microsec) 304383 nodes 1145947 nps 3764818<br>
+info score cp 12 pv a5b5 f1g1 d4e4 h7R a7b7 d0d1<br>
+bestmove a5b5<br>
+info depth 1 move_no 1 time (microsec) 50 nodes 175 nps 3479263<br>
+info score cp -295 pv a7R f3g2<br>
+info depth 1 move_no 2 time (microsec) 90 nodes 280 nps 3108968<br>
+info score cp -230 pv a7L f3g2<br>
+info depth 1 move_no 3 time (microsec) 114 nodes 352 nps 3082527<br>
+info score cp 23 pv b5a5<br>
+info depth 1 move_no 15 time (microsec) 145 nodes 435 nps 2988068<br>
+info score cp 32 pv b5a4<br>
+info depth 2 move_no 1 time (microsec) 428 nodes 1176 nps 2747316<br>
+info score cp 37 pv b5a4 f4e4<br>
+info depth 3 move_no 1 time (microsec) 1587 nodes 6135 nps 3865752<br>
+info score cp 15 pv b5a4 f4R a4b4<br>
+info depth 3 move_no 30 time (microsec) 2196 nodes 8320 nps 3788235<br>
+info score cp 16 pv d4e4 f4R e7f6<br>
+info depth 3 move_no 61 time (microsec) 4555 nodes 18300 nps 4016990<br>
+info score cp 18 pv e7f6 d0d1 a7b6<br>
+info depth 4 move_no 1 time (microsec) 9500 nodes 32942 nps 3467459<br>
+info score cp -9 pv e7f6 h7g7 d6d7 f4e3<br>
+info depth 4 move_no 2 time (microsec) 11976 nodes 42944 nps 3585550<br>
+info score cp 12 pv d4e4 h7R a7b7 d0d1<br>
+info depth 5 move_no 1 time (microsec) 139972 nodes 553771 nps 3956278<br>
+info score cp 2 pv d4e4 h7g6 e4f3 d2c1 b5a4<br>
+info depth 5 move_no 8 time (microsec) 228965 nodes 912975 nps 3987394<br>
+info score cp 14 pv d4e5 h7g6 a7b7 d2e3 b2c2<br>
+info depth 6 move_no 1 time (microsec) 743578 nodes 3013319 nps 4052457<br>
+info score cp 15 pv d4e5 d2e3 d6R h7g6 b5a5 f4R<br>
+bestmove d4e5<br>
+info depth 1 move_no 1 time (microsec) 44 nodes 126 nps 2841678<br>
+info score cp 14 pv b5c5<br>
+info depth 2 move_no 1 time (microsec) 204 nodes 451 nps 2201030<br>
+info score cp -9 pv b5c5 h7g7<br>
+info depth 2 move_no 2 time (microsec) 374 nodes 835 nps 2227207<br>
+info score cp -1 pv b2b3 h7g6<br>
+info depth 2 move_no 19 time (microsec) 828 nodes 2640 nps 3186716<br>
+info score cp 18 pv e5f4 e5d4<br>
+info depth 3 move_no 1 time (microsec) 1757 nodes 6735 nps 3831816<br>
+info score cp 14 pv e5f4 e5R d6c5<br>
+info depth 3 move_no 54 time (microsec) 3970 nodes 13932 nps 3509214<br>
+info score cp 15 pv e5e4 h7R c3d3<br>
+info depth 4 move_no 1 time (microsec) 5668 nodes 18700 nps 3299208<br>
+info score cp 0 pv e5e4 e3e4 d6R d0c1<br>
+info depth 4 move_no 28 time (microsec) 24051 nodes 92058 nps 3827545<br>
+info score cp 15 pv d6R h7g6 b5a5 f4R<br>
+info depth 5 move_no 1 time (microsec) 75391 nodes 304422 nps 4037882<br>
+info score cp 7 pv d6R h7g6 e7e6 g6g7 a7a6<br>
+info depth 6 move_no 1 time (microsec) 338901 nodes 1369921 nps 4042238<br>
+info score cp -2 pv d6R h7g6 e5f4 e5e4 f4f3 f4e4<br>
+info depth 6 move_no 3 time (microsec) 1001008 nodes 4053309 nps 4049224<br>
+info score cp 24 pv e5f4 h7g6 f4f3 e3U b2a2 d0d1<br>
+bestmove e5f4<br>
+info depth 1 move_no 1 time (microsec) 36 nodes 76 nps 2092452<br>
+info score cp 13 pv c3b4<br>
+info depth 1 move_no 2 time (microsec) 71 nodes 148 nps 2078097<br>
+info score cp 14 pv f4U<br>
+info depth 1 move_no 3 time (microsec) 127 nodes 350 nps 2754929<br>
+info score cp 16 pv e7f6<br>
+info depth 1 move_no 65 time (microsec) 206 nodes 522 nps 2533513<br>
+info score cp 22 pv b5a5<br>
+info depth 2 move_no 1 time (microsec) 564 nodes 2161 nps 3830269<br>
+info score cp 0 pv b5a5 h7g7<br>
+info depth 2 move_no 2 time (microsec) 792 nodes 2698 nps 3404712<br>
+info score cp 1 pv e7f6 h7g6<br>
+info depth 3 move_no 1 time (microsec) 7288 nodes 31483 nps 4319252<br>
+info score cp 8 pv e7f6 h7g6 a7a6<br>
+info depth 3 move_no 9 time (microsec) 13037 nodes 54531 nps 4182544<br>
+info score cp 13 pv d6c7 h7g7 b5a6 f3g4 a7b7<br>
+info depth 3 move_no 35 time (microsec) 19367 nodes 77789 nps 4016520<br>
+info score cp 15 pv d6d5 d0c1 b5a6 f3g4 a7b7<br>
+info depth 3 move_no 37 time (microsec) 21084 nodes 83098 nps 3941191<br>
+info score cp 24 pv f4f3 f4L b5a4 g1f0 a4a3 f6e5<br>
+info depth 4 move_no 1 time (microsec) 56265 nodes 219712 nps 3904948<br>
+info score cp 38 pv f4f3 e3U b2a2 h7g7<br>
+info depth 5 move_no 1 time (microsec) 243459 nodes 974680 nps 4003456<br>
+info score cp 18 pv f4f3 d0c1 e7f6 f4f3 a7a6<br>
+info depth 6 move_no 1 time (microsec) 1059198 nodes 4149491 nps 3917577<br>
+info score cp 27 pv f4f3 d0c1 d6d5 h7R b2a2 f6g7 a2a3<br>
+bestmove f4f3<br>
+info depth 1 move_no 1 time (microsec) 68 nodes 209 nps 3069061<br>
+info score cp -229 pv b5c4 g1f1<br>
+info depth 1 move_no 2 time (microsec) 162 nodes 553 nps 3400586<br>
+info score cp -5 pv e7e6<br>
+info depth 1 move_no 15 time (microsec) 201 nodes 620 nps 3084132<br>
+info score cp 61 pv b2a3<br>
+info depth 2 move_no 1 time (microsec) 465 nodes 1475 nps 3166561<br>
+info score cp 67 pv b2a3 h7R<br>
+info depth 3 move_no 1 time (microsec) 1365 nodes 4571 nps 3346361<br>
+info score cp 42 pv b2a3 h7R a3a2<br>
+info depth 4 move_no 1 time (microsec) 3447 nodes 10831 nps 3141637<br>
+info score cp 13 pv b2a3 h7R a3a2 f6g7<br>
+info depth 4 move_no 23 time (microsec) 16372 nodes 56542 nps 3453469<br>
+info score cp 25 pv d6d7 h7R b2a2 f6g7 a2a3<br>
+info depth 4 move_no 51 time (microsec) 29976 nodes 111854 nps 3731412<br>
+info score cp 27 pv d6d5 h7R b2a2 f6g7 a2a3<br>
+info depth 5 move_no 1 time (microsec) 109931 nodes 418404 nps 3806057<br>
+info score cp -3 pv d6d5 h7R f3L f4f3 f4e3<br>
+info depth 5 move_no 42 time (microsec) 298825 nodes 1132323 nps 3789245<br>
+info score cp 17 pv b2a2 f4f3 a7b6 h7R e7f6<br>
+info depth 6 move_no 1 time (microsec) 394582 nodes 1502068 nps 3806730<br>
+info score cp -8 pv b2a2 f4f3 a7b7 h7R f4L f3f4<br>
+info depth 6 move_no 2 time (microsec) 694019 nodes 2671957 nps 3849971<br>
+info score cp 1 pv d6d5 h7R c3b3 f4f3 e7f6 f3e4<br>
+info depth 6 move_no 7 time (microsec) 889974 nodes 3442810 nps 3868435<br>
+info score cp 14 pv f3f2 c1b2 c1b1 b2U b1a0 h7g7<br>
+bestmove f3f2<br>
+info depth 1 move_no 1 time (microsec) 63 nodes 237 nps 3704224<br>
+info score cp -206 pv a7L g1f1<br>
+info depth 1 move_no 2 time (microsec) 115 nodes 371 nps 3215071<br>
+info score cp -6 pv c3d2<br>
+info depth 1 move_no 14 time (microsec) 169 nodes 514 nps 3032377<br>
+info score cp -4 pv e7f6<br>
+info depth 2 move_no 1 time (microsec) 1600 nodes 6969 nps 4354764<br>
+info score cp -67 pv e7f6 g1L f2g1<br>
+info depth 2 move_no 2 time (microsec) 1714 nodes 7244 nps 4224670<br>
+info score cp -29 pv c3d2 h7g7<br>
+info depth 2 move_no 19 time (microsec) 2934 nodes 11438 nps 3897705<br>
+info score cp -9 pv d6d7 g1L b5a6 c1L f2U<br>
+info depth 2 move_no 55 time (microsec) 4080 nodes 16084 nps 3941217<br>
+info score cp -7 pv d6d5 g1L b5a6 c1L f2U<br>
+info depth 3 move_no 1 time (microsec) 14052 nodes 56565 nps 4025304<br>
+info score cp -54 pv d6d5 g1L f2g1 f2g2<br>
+info depth 3 move_no 2 time (microsec) 22933 nodes 91253 nps 3979018<br>
+info score cp -40 pv d6d7 g1L a7b6 c1b0<br>
+info depth 3 move_no 3 time (microsec) 25754 nodes 102012 nps 3960931<br>
+info score cp -32 pv c3d2 h7g7 a7a6<br>
+info depth 3 move_no 19 time (microsec) 32579 nodes 129784 nps 3983659<br>
+info score cp -18 pv c3b2 h7g6 b5a6 g1f1 a7b7<br>
+info depth 4 move_no 1 time (microsec) 67541 nodes 264161 nps 3911106<br>
+info score cp -2 pv c3b2 f4f3 d6d5 f6e5<br>
+info depth 4 move_no 56 time (microsec) 105212 nodes 411591 nps 3911993<br>
+info score cp 14 pv c1b1 b2U b1a0 h7g7<br>
+info depth 5 move_no 1 time (microsec) 165672 nodes 631299 nps 3810527<br>
+info score cp 18 pv c1b1 b2U b1a0 h7g6 e7f6<br>
+info depth 6 move_no 1 time (microsec) 580400 nodes 2296523 nps 3956789<br>
+info score cp 41 pv c1b1 b2U b1a0 e3f2 c3b2 f2e3<br>
+bestmove c1b1<br>
+info depth 1 move_no 1 time (microsec) 34 nodes 76 nps 2187933<br>
+info score cp 37 pv b1a0<br>
+info depth 2 move_no 1 time (microsec) 317 nodes 926 nps 2916994<br>
+info score cp 22 pv b1a0 h7g6<br>
+info depth 3 move_no 1 time (microsec) 2707 nodes 11498 nps 4247274<br>
+info score cp 18 pv b1a0 h7g6 e7f6<br>
+info depth 4 move_no 1 time (microsec) 15754 nodes 57337 nps 3639359<br>
+info score cp 41 pv b1a0 e3f2 c3b2 f2e3<br>
+info depth 5 move_no 1 time (microsec) 90096 nodes 351323 nps 3899409<br>
+info score cp 37 pv b1a0 e3f2 c3b2 f4e3 b2a2 g1f1 a2b3<br>
+info depth 6 move_no 1 time (microsec) 327621 nodes 1317269 nps 4020708<br>
+info score cp 44 pv b1a0 e3f2 e3e2 f4e3 e2f1 f2f1<br>
+bestmove b1a0<br>
+info depth 1 move_no 1 time (microsec) 42 nodes 117 nps 2775734<br>
+info score cp -250 pv a0L f4g3<br>
+info depth 1 move_no 3 time (microsec) 124 nodes 364 nps 2914962<br>
+info score cp -147 pv e7f6 f4g3 a7L c3d3<br>
+info depth 1 move_no 10 time (microsec) 237 nodes 747 nps 3148391<br>
+info score cp 39 pv e3d2<br>
+info depth 1 move_no 31 time (microsec) 379 nodes 1323 nps 3483614<br>
+info score cp 40 pv e3R<br>
+info depth 2 move_no 1 time (microsec) 637 nodes 2152 nps 3375739<br>
+info score cp 16 pv e3R h7g7<br>
+info depth 2 move_no 2 time (microsec) 896 nodes 2986 nps 3329252<br>
+info score cp 41 pv e3d2 g1h1<br>
+info depth 3 move_no 1 time (microsec) 3349 nodes 13920 nps 4156421<br>
+info score cp -26 pv e3d2 f4g3 b5b4<br>
+info depth 3 move_no 2 time (microsec) 5132 nodes 22182 nps 4322118<br>
+info score cp 12 pv e3R f4g3 a7b6<br>
+info depth 3 move_no 30 time (microsec) 7797 nodes 32304 nps 4143037<br>
+info score cp 37 pv c3b2 f4e3 f4e4<br>
+info depth 4 move_no 1 time (microsec) 11402 nodes 45090 nps 3954307<br>
+info score cp 36 pv c3b2 f2f3 d6c5 f4g3<br>
+info depth 4 move_no 13 time (microsec) 34868 nodes 137902 nps 3954968<br>
+info score cp 44 pv e3e2 f4e3 e2f1 f2f1<br>
+info depth 5 move_no 1 time (microsec) 96525 nodes 377675 nps 3912698<br>
+info score cp 40 pv e3e2 h7R e2f1 e1f1 e7f6<br>
+info depth 6 move_no 1 time (microsec) 321702 nodes 1280148 nps 3979292<br>
+info score cp 44 pv e3e2 h7R e2f1 e1f1 e7f6 f2e3<br>
+bestmove e3e2<br>
+info depth 1 move_no 1 time (microsec) 29 nodes 68 nps 2314974<br>
+info score cp -48 pv a7L<br>
+info depth 1 move_no 2 time (microsec) 64 nodes 142 nps 2214977<br>
+info score cp 38 pv b5b6<br>
+info depth 1 move_no 10 time (microsec) 91 nodes 223 nps 2430464<br>
+info score cp 39 pv d6e5<br>
+info depth 1 move_no 38 time (microsec) 144 nodes 324 nps 2242370<br>
+info score cp 40 pv e2e3<br>
+info depth 2 move_no 1 time (microsec) 357 nodes 831 nps 2326942<br>
+info score cp 16 pv e2e3 h7g7<br>
+info depth 2 move_no 2 time (microsec) 909 nodes 3301 nps 3627544<br>
+info score cp 44 pv d6e5 f6f5<br>
+info depth 3 move_no 1 time (microsec) 3891 nodes 16107 nps 4138782<br>
+info score cp 38 pv d6e5 f2e2 b5a6 g1f1 a6b5<br>
+info depth 3 move_no 12 time (microsec) 6450 nodes 25350 nps 3930054<br>
+info score cp 39 pv c3b3 e3f3 e7f6<br>
+info depth 3 move_no 34 time (microsec) 14127 nodes 54642 nps 3867678<br>
+info score cp 145 pv e2f1 f2f1 a0a1<br>
+info depth 4 move_no 1 time (microsec) 23010 nodes 91406 nps 3972323<br>
+info score cp 135 pv e2f1 f2f1 a0a1 b2a1 b2a3<br>
+info depth 5 move_no 1 time (microsec) 129808 nodes 546383 nps 4209136<br>
+info score cp 39 pv e2f1 f2f1 f2e1 h7R e7f6<br>
+info depth 5 move_no 3 time (microsec) 211438 nodes 874835 nps 4137538<br>
+info score cp 40 pv d6e5 h7R e2f1 e1f1 e7f6<br>
+info depth 5 move_no 21 time (microsec) 340552 nodes 1395318 nps 4097217<br>
+info score cp 41 pv e7f6 h7R f6e5 e7d6 e2e3<br>
+info depth 6 move_no 1 time (microsec) 747373 nodes 3011661 nps 4029658<br>
+info score cp 44 pv e7f6 h7R e2f1 f2f1 f6R b2c3<br>
+info depth 6 move_no 52 time (microsec) 1988880 nodes 8029060 nps 4036974<br>
+info score cp 64 pv c3b4 f2U e2f1 f2f1 b4a3 b2a3 a3L g1f1<br>
+bestmove c3b4<br>
+info depth 1 move_no 1 time (microsec) 65 nodes 241 nps 3677199<br>
+info score cp 37 pv e2f3<br>
+info depth 1 move_no 2 time (microsec) 98 nodes 315 nps 3182138<br>
+info score cp 38 pv b4c5<br>
+info depth 1 move_no 35 time (microsec) 145 nodes 418 nps 2867471<br>
+info score cp 39 pv e7f6<br>
+info depth 2 move_no 1 time (microsec) 654 nodes 2670 nps 4080534<br>
+info score cp 43 pv e7f6 e7d6<br>
+info depth 2 move_no 18 time (microsec) 1585 nodes 6855 nps 4322450<br>
+info score cp 199 pv e2f1 b2a3 a3L<br>
+info depth 3 move_no 1 time (microsec) 4273 nodes 17811 nps 4168126<br>
+info score cp 173 pv e2f1 f2f1 a0a1 b2a1<br>
+info depth 3 move_no 55 time (microsec) 13773 nodes 52509 nps 3812340<br>
+info score cp 192 pv b4a4 g1L a0L<br>
+info depth 4 move_no 1 time (microsec) 54673 nodes 224419 nps 4104730<br>
+info score cp 111 pv b4a4 b2R a0b1 e1f2 d4R g1L<br>
+info depth 4 move_no 2 time (microsec) 57684 nodes 236180 nps 4094371<br>
+info score cp 146 pv e2f1 f2f1 a0a1 f1L a1b2 g1f1 a1L<br>
+info depth 5 move_no 1 time (microsec) 80583 nodes 321782 nps 3993149<br>
+info score cp 140 pv e2f1 f2f1 a0a1 f1L a1b2 g1f1 a1L f1g1<br>
+info depth 6 move_no 1 time (microsec) 340117 nodes 1336508 nps 3929546<br>
+info score cp 154 pv e2f1 f2f1 a0a1 f1L a1b2 g1f1 a1L d4e3 b5a5<br>
+bestmove e2f1<br>
+info depth 1 move_no 1 time (microsec) 61 nodes 194 nps 3164453<br>
+info score cp -127 pv b5c4 g1L<br>
+info depth 1 move_no 8 time (microsec) 175 nodes 611 nps 3484698<br>
+info score cp 38 pv f2U<br>
+info depth 1 move_no 42 time (microsec) 238 nodes 767 nps 3215865<br>
+info score cp 39 pv f2e3<br>
+info depth 1 move_no 60 time (microsec) 294 nodes 887 nps 3013726<br>
+info score cp 263 pv a0a1<br>
+info depth 2 move_no 1 time (microsec) 516 nodes 1526 nps 2953998<br>
+info score cp 268 pv a0a1 f1f2<br>
+info depth 3 move_no 1 time (microsec) 980 nodes 3092 nps 3152734<br>
+info score cp 146 pv a0a1 f1L a1b2 g1f1 a1L<br>
+info depth 4 move_no 1 time (microsec) 2070 nodes 6760 nps 3264837<br>
+info score cp 152 pv a0a1 f1L a1b2 g1f1 a1L d4e3<br>
+info depth 5 move_no 1 time (microsec) 4233 nodes 14496 nps 3424291<br>
+info score cp 154 pv a0a1 f1L a1b2 g1f1 a1L d4e3 b5a5<br>
+info depth 6 move_no 1 time (microsec) 94191 nodes 372490 nps 3954597<br>
+info score cp 142 pv a0a1 f1L a1b2 g1f1 a1L d4e3 b5a6 f1g1 a6a5<br>
+info depth 7 move_no 1 time (microsec) 446518 nodes 1816526 nps 4068200<br>
+info score cp 139 pv a0a1 f1L a1b2 g1f1 a1L d4e3 b4U f6e7 a7L e3f4 a7R<br>
+bestmove a0a1<br>
+info depth 1 move_no 1 time (microsec) 39 nodes 116 nps 2920590<br>
+info score cp -173 pv a1U g1f1<br>
+info depth 1 move_no 5 time (microsec) 97 nodes 244 nps 2511192<br>
+info score cp 43 pv a1a0 g1f1<br>
+info depth 1 move_no 29 time (microsec) 225 nodes 704 nps 3116685<br>
+info score cp 146 pv a1b2 g1f1 a1L<br>
+info depth 2 move_no 1 time (microsec) 521 nodes 1464 nps 2804882<br>
+info score cp 140 pv a1b2 g1f1 a1L f1g1<br>
+info depth 3 move_no 1 time (microsec) 2803 nodes 10973 nps 3913523<br>
+info score cp 147 pv a1b2 g1f1 a1L f6e7 a7L f6U a7R<br>
+info depth 4 move_no 1 time (microsec) 8858 nodes 36627 nps 4134622<br>
+info score cp 140 pv a1b2 g1f1 a1L d4e3 b4U f6e7 a7L e3f4<br>
+info depth 5 move_no 1 time (microsec) 37271 nodes 153720 nps 4124344<br>
+info score cp 139 pv a1b2 g1f1 a1L d4e3 b4U f6e7 a7L e3f4 a7R<br>
+info depth 6 move_no 1 time (microsec) 213361 nodes 877111 nps 4110912<br>
+info score cp 143 pv a1b2 g1f1 a1L d4e3 b5a6 f1g1 a6b5 e3f3 b5a5<br>
+info depth 7 move_no 1 time (microsec) 1080400 nodes 4432099 nps 4102275<br>
+info score cp 141 pv a1b2 g1f1 a1L d4e4 b5a6 e4f3 a6b5 f1g1 b5a5 f3g3<br>
+bestmove a1b2<br>
+info depth 1 move_no 1 time (microsec) 25 nodes 57 nps 2274176<br>
+info score cp 14 pv d6c7<br>
+info depth 1 move_no 5 time (microsec) 59 nodes 118 nps 1976880<br>
+info score cp 15 pv b5R<br>
+info depth 1 move_no 16 time (microsec) 84 nodes 185 nps 2190411<br>
+info score cp 16 pv d6c5<br>
+info depth 1 move_no 18 time (microsec) 107 nodes 243 nps 2270730<br>
+info score cp 17 pv b2c3<br>
+info depth 1 move_no 44 time (microsec) 151 nodes 327 nps 2158187<br>
+info score cp 45 pv a1a0<br>
+info depth 1 move_no 46 time (microsec) 173 nodes 385 nps 2224417<br>
+info score cp 146 pv a1U<br>
+info depth 2 move_no 1 time (microsec) 275 nodes 691 nps 2511275<br>
+info score cp 140 pv a1U f1g1<br>
+info depth 3 move_no 1 time (microsec) 1888 nodes 7749 nps 4103543<br>
+info score cp 165 pv a1U f6e7 b4a4<br>
+info depth 4 move_no 1 time (microsec) 5021 nodes 21326 nps 4246942<br>
+info score cp 147 pv a1U f6f7 a7L d4e3 a7R<br>
+info depth 5 move_no 1 time (microsec) 19620 nodes 81413 nps 4149348<br>
+info score cp 142 pv a1U f6f7 d6c5 d4e3 a7a6<br>
+info depth 6 move_no 1 time (microsec) 112910 nodes 465195 nps 4120036<br>
+info score cp 141 pv a1U d4e4 b4c3 f6e7 a7L f6U a7R f1g1<br>
+info depth 7 move_no 1 time (microsec) 303773 nodes 1258081 nps 4141506<br>
+info score cp 141 pv a1U d4e4 b5a6 e4f3 a6b5 f1g1 b5c4 f3e4<br>
+info depth 7 move_no 50 time (microsec) 922657 nodes 3783501 nps 4100657<br>
+info score cp 142 pv a1L f6e7 a7L f6f7 d6d5 d4e5 a7R f1g1<br>
+info depth 7 move_no 52 time (microsec) 1699493 nodes 6866167 nps 4040125<br>
+info score cp 154 pv e7d7 g1L b2b1 d4e5 a1U e5d6 b4a3 f6f7<br>
+bestmove e7d7<br>
+info depth 1 move_no 1 time (microsec) 52 nodes 167 nps 3193543<br>
+info score cp -9 pv a7a6<br>
+info depth 1 move_no 2 time (microsec) 87 nodes 229 nps 2614304<br>
+info score cp 17 pv b2b3<br>
+info depth 1 move_no 14 time (microsec) 125 nodes 312 nps 2484748<br>
+info score cp 42 pv b2a2<br>
+info depth 1 move_no 20 time (microsec) 155 nodes 376 nps 2420216<br>
+info score cp 147 pv a1U<br>
+info depth 2 move_no 1 time (microsec) 308 nodes 898 nps 2907682<br>
+info score cp 141 pv a1U f1g1<br>
+info depth 3 move_no 1 time (microsec) 2376 nodes 9763 nps 4107940<br>
+info score cp 173 pv a1U g1L b4a3<br>
+info depth 4 move_no 1 time (microsec) 5477 nodes 22417 nps 4092428<br>
+info score cp 153 pv a1U g1L b4a3 f6f7<br>
+info depth 4 move_no 21 time (microsec) 19322 nodes 80565 nps 4169521<br>
+info score cp 174 pv b2b1 f6f7 a1L e1L b1a0<br>
+info depth 5 move_no 1 time (microsec) 38046 nodes 145938 nps 3835819<br>
+info score cp 167 pv b2b1 g1h1 a1L e5d6 b1a0 f6e5<br>
+info depth 5 move_no 2 time (microsec) 50478 nodes 197108 nps 3904777<br>
+info score cp 175 pv a1U e1L d6e5 g1L b4a3<br>
+info depth 6 move_no 1 time (microsec) 93518 nodes 359959 nps 3849059<br>
+info score cp 154 pv a1U e1L b2b1 e5d6 b4a3 f6f7<br>
+info depth 6 move_no 2 time (microsec) 197309 nodes 777309 nps 3939535<br>
+info score cp 174 pv b2b1 f6f7 a1L e1L b1a0 e5e4 d6e5<br>
+info depth 6 move_no 36 time (microsec) 251224 nodes 996205 nps 3965397<br>
+info score cp 175 pv a1L f6f7 b2b1 e5e4 b1a0 f1f2<br>
+info depth 7 move_no 1 time (microsec) 329412 nodes 1286624 nps 3905818<br>
+info score cp 174 pv a1L f6f7 b2b1 e1L b1a0 e5e4 d6e5<br>
+bestmove a1L<br>
+info depth 1 move_no 2 time (microsec) 23 nodes 33 nps 1423763<br>
+info score cp -31999 pv b4a5 f1e2<br>
+info depth 1 move_no 3 time (microsec) 60 nodes 93 nps 1533286<br>
+info score cp 121 pv d6e6<br>
+info depth 1 move_no 7 time (microsec) 100 nodes 212 nps 2112079<br>
+info score cp 147 pv b4a3<br>
+info depth 1 move_no 22 time (microsec) 140 nodes 284 nps 2020015<br>
+info score cp 177 pv b2a2<br>
+info depth 2 move_no 1 time (microsec) 260 nodes 552 nps 2121714<br>
+info score cp 177 pv b2a2 f1f0<br>
+info depth 3 move_no 1 time (microsec) 1129 nodes 3766 nps 3334271<br>
+info score cp 147 pv b2a2 e1L a2a3<br>
+info depth 3 move_no 18 time (microsec) 2172 nodes 7630 nps 3512024<br>
+info score cp 148 pv d6c5 e1L b4a3<br>
+info depth 3 move_no 27 time (microsec) 2944 nodes 10441 nps 3545647<br>
+info score cp 174 pv b4c5 f7f6 b2a3<br>
+info depth 4 move_no 1 time (microsec) 4421 nodes 14662 nps 3316024<br>
+info score cp 154 pv b4c5 f7f6 b2a3 f6f7<br>
+info depth 4 move_no 39 time (microsec) 11874 nodes 45836 nps 3860145<br>
+info score cp 175 pv b2b1 e5e4 b1a0 f1f2<br>
+info depth 5 move_no 1 time (microsec) 15598 nodes 57322 nps 3674732<br>
+info score cp 174 pv b2b1 e1L b1a0 e5e4 d6e5<br>
+info depth 6 move_no 1 time (microsec) 82542 nodes 311868 nps 3778264<br>
+info score cp 177 pv b2b1 g1L b4b3 f7g7 b1a0 f1g1<br>
+info depth 7 move_no 1 time (microsec) 263811 nodes 1039397 nps 3939926<br>
+info score cp 176 pv b2b1 g1L b1a0 e5e4 d6U e4e5 d6e5<br>
+info depth 8 move_no 1 time (microsec) 1299710 nodes 5127010 nps 3944733<br>
+info score cp 177 pv b2b1 e5e6 d7c7 g1L d6d5 g1g2 b1a0 f1f2<br>
+bestmove b2b1<br>
+info depth 1 move_no 1 time (microsec) 32 nodes 59 nps 1796644<br>
+info score cp 121 pv b5c6<br>
+info depth 1 move_no 4 time (microsec) 68 nodes 118 nps 1725978<br>
+info score cp 123 pv b1c2<br>
+info depth 1 move_no 16 time (microsec) 128 nodes 275 nps 2144149<br>
+info score cp 147 pv b4a3<br>
+info depth 1 move_no 17 time (microsec) 155 nodes 332 nps 2141327<br>
+info score cp 178 pv b1a2<br>
+info depth 2 move_no 1 time (microsec) 346 nodes 985 nps 2845200<br>
+info score cp 178 pv b1a2 f1f0<br>
+info depth 3 move_no 1 time (microsec) 1237 nodes 4657 nps 3764004<br>
+info score cp 148 pv b1a2 g1L a2a3<br>
+info depth 3 move_no 2 time (microsec) 1839 nodes 6670 nps 3626685<br>
+info score cp 149 pv b4a3 g1L b1c2<br>
+info depth 3 move_no 7 time (microsec) 2990 nodes 11301 nps 3779189<br>
+info score cp 174 pv b4L e6e5 b1a0<br>
+info depth 3 move_no 11 time (microsec) 3886 nodes 14996 nps 3858118<br>
+info score cp 175 pv d7c7 g1L b1a0<br>
+info depth 3 move_no 21 time (microsec) 4578 nodes 17795 nps 3886311<br>
+info score cp 176 pv d6c5 e1d1 b1a0<br>
+info depth 4 move_no 1 time (microsec) 6703 nodes 25223 nps 3762769<br>
+info score cp 109 pv d6c5 e6d7 a7a6 f7e6<br>
+info depth 4 move_no 2 time (microsec) 7914 nodes 30081 nps 3800523<br>
+info score cp 177 pv d7c7 e1L b1a0 f1f2<br>
+info depth 4 move_no 29 time (microsec) 17869 nodes 71497 nps 4000997<br>
+info score cp 178 pv b1a0 f1g1 d7e6 g1f2<br>
+info depth 5 move_no 1 time (microsec) 43137 nodes 166812 nps 3866949<br>
+info score cp 177 pv b1a0 e1L d6e5 g1g2 b5c4<br>
+info depth 6 move_no 1 time (microsec) 74874 nodes 289078 nps 3860810<br>
+info score cp 153 pv b1a0 e6d7 d6c7 d7c7 a7L f1e2<br>
+info depth 6 move_no 2 time (microsec) 119355 nodes 467202 nps 3914365<br>
+info score cp 178 pv d7c7 e1L b4b3 f7g7 b1a0 g1f1<br>
+info depth 7 move_no 1 time (microsec) 329012 nodes 1295084 nps 3936274<br>
+info score cp 177 pv d7c7 e1L b1a0 e6d6 b5a6 g1g2 a0b1<br>
+bestmove d7c7<br>
+info depth 1 move_no 1 time (microsec) 26 nodes 54 nps 2032215<br>
+info score cp -31999 pv a7b7 f1L<br>
+info depth 1 move_no 2 time (microsec) 63 nodes 111 nps 1737769<br>
+info score cp 121 pv c7L<br>
+info depth 1 move_no 3 time (microsec) 85 nodes 167 nps 1951276<br>
+info score cp 122 pv b4c4<br>
+info depth 1 move_no 13 time (microsec) 121 nodes 252 nps 2081544<br>
+info score cp 175 pv b1a0<br>
+info depth 2 move_no 1 time (microsec) 208 nodes 409 nps 1961659<br>
+info score cp 180 pv b1a0 e6e5<br>
+info depth 3 move_no 1 time (microsec) 462 nodes 1231 nps 2661201<br>
+info score cp 176 pv b1a0 e6e5 d6e5<br>
+info depth 4 move_no 1 time (microsec) 3638 nodes 13090 nps 3597693<br>
+info score cp 178 pv b1a0 f1g1 d6c5 f7g7<br>
+info depth 5 move_no 1 time (microsec) 47726 nodes 179173 nps 3754194<br>
+info score cp 177 pv b1a0 e6d6 b5a6 e1e2 a0b1<br>
+info depth 6 move_no 1 time (microsec) 130530 nodes 505942 nps 3876045<br>
+info score cp 157 pv b1a0 g1f2 d6d5 f2e2 d5d4 f1f2<br>
+info depth 6 move_no 2 time (microsec) 228334 nodes 906986 nps 3972175<br>
+info score cp 177 pv b4c4 e6e5 c4b3 f7g7 b1a0 f1g1<br>
+info depth 6 move_no 18 time (microsec) 355790 nodes 1431441 nps 4023264<br>
+info score cp 180 pv b4b3 e1L b1a0 g1g2 d6L e6e5<br>
+info depth 7 move_no 1 time (microsec) 571551 nodes 2290391 nps 4007319<br>
+info score cp 176 pv b4b3 e1L b1a0 e6d6 e6R d6e5 e6e5<br>
+bestmove b4b3<br>
+info depth 1 move_no 1 time (microsec) 29 nodes 51 nps 1738419<br>
+info score cp -31999 pv b3a2 g1f2<br>
+info depth 1 move_no 2 time (microsec) 67 nodes 105 nps 1548125<br>
+info score cp 122 pv b1L<br>
+info depth 1 move_no 5 time (microsec) 98 nodes 166 nps 1680791<br>
+info score cp 139 pv b3a4<br>
+info depth 1 move_no 27 time (microsec) 141 nodes 241 nps 1707548<br>
+info score cp 176 pv b1a0<br>
+info depth 2 move_no 1 time (microsec) 222 nodes 379 nps 1706807<br>
+info score cp 180 pv b1a0 e7d6<br>
+info depth 3 move_no 1 time (microsec) 647 nodes 2020 nps 3119546<br>
+info score cp 175 pv b1a0 e7d6 b5c4<br>
+info depth 3 move_no 38 time (microsec) 3405 nodes 11785 nps 3461036<br>
+info score cp 176 pv b3c4 g1g2 b1a0<br>
+info depth 4 move_no 1 time (microsec) 6119 nodes 20573 nps 3361790<br>
+info score cp 154 pv b3c4 e7d6 b5a6 f7e7 d6L f7U<br>
+info depth 4 move_no 2 time (microsec) 6814 nodes 22336 nps 3277792<br>
+info score cp 179 pv b1a0 e7d6 e7d7 d6e5<br>
+info depth 5 move_no 1 time (microsec) 28144 nodes 111210 nps 3951342<br>
+info score cp 174 pv b1a0 e7d6 e7d7 d6e5 d7d6<br>
+info depth 5 move_no 24 time (microsec) 58907 nodes 223412 nps 3792574<br>
+info score cp 175 pv d6c5 f7g7 b1a0 g1f1 c5d4<br>
+info depth 5 move_no 32 time (microsec) 69369 nodes 260190 nps 3750798<br>
+info score cp 177 pv d6e5 e1L b1a0 g1g2 e5e4<br>
+info depth 6 move_no 1 time (microsec) 153233 nodes 616024 nps 4020163<br>
+info score cp 180 pv d6e5 e7e6 b1a0 e6e5 e6d5 g1g2<br>
+info depth 6 move_no 52 time (microsec) 266228 nodes 1089472 nps 4092250<br>
+info score cp 181 pv d6d5 e1L b1a0 f7g7 d5e4 f1g1<br>
+info depth 7 move_no 1 time (microsec) 456455 nodes 1849076 nps 4050941<br>
+info score cp 176 pv d6d5 e7d6 b3c4 g1g2 b1a0 d6e5 d5d4<br>
+bestmove d6d5<br>
+info depth 1 move_no 1 time (microsec) 31 nodes 59 nps 1863785<br>
+info score cp 123 pv b3c2<br>
+info depth 1 move_no 13 time (microsec) 77 nodes 144 nps 1853138<br>
+info score cp 176 pv b1a0<br>
+info depth 2 move_no 1 time (microsec) 171 nodes 333 nps 1937488<br>
+info score cp 181 pv b1a0 g1g2<br>
+info depth 3 move_no 1 time (microsec) 489 nodes 1363 nps 2784735<br>
+info score cp 176 pv b1a0 g1g2 d5e4<br>
+info depth 4 move_no 1 time (microsec) 4616 nodes 14571 nps 3156397<br>
+info score cp 181 pv b1a0 g1g2 d5e4 e6e5<br>
+info depth 5 move_no 1 time (microsec) 44641 nodes 174767 nps 3914865<br>
+info score cp 179 pv b1a0 e6d7 a7a6 f7R d5e6 c7R<br>
+info depth 6 move_no 1 time (microsec) 128922 nodes 508705 nps 3945820<br>
+info score cp 180 pv b1a0 g1g2 d5e4 e6e5 e4L e5e4<br>
+info depth 7 move_no 1 time (microsec) 431322 nodes 1747492 nps 4051477<br>
+info score cp 185 pv b1a0 g1g2 b5b6 e6e5 d5e4 e5e4 a7a6<br>
+bestmove b1a0<br>
+info depth 1 move_no 1 time (microsec) 26 nodes 54 nps 2033668<br>
+info score cp -40 pv a0R<br>
+info depth 1 move_no 2 time (microsec) 62 nodes 112 nps 1795562<br>
+info score cp 175 pv b3b4<br>
+info depth 1 move_no 5 time (microsec) 81 nodes 168 nps 2063273<br>
+info score cp 176 pv b5c4<br>
+info depth 2 move_no 1 time (microsec) 196 nodes 318 nps 1621787<br>
+info score cp 151 pv b5c4 e5f5<br>
+info depth 2 move_no 2 time (microsec) 338 nodes 593 nps 1751029<br>
+info score cp 177 pv b3b4 f1f2<br>
+info depth 2 move_no 5 time (microsec) 507 nodes 1070 nps 2108083<br>
+info score cp 180 pv d5c5 g1g2<br>
+info depth 3 move_no 1 time (microsec) 1726 nodes 6297 nps 3648104<br>
+info score cp 175 pv d5c5 g1g2 c5d4<br>
+info depth 3 move_no 15 time (microsec) 2764 nodes 9630 nps 3483295<br>
+info score cp 176 pv d5e4 g1g2 b5c5<br>
+info depth 3 move_no 28 time (microsec) 3878 nodes 13726 nps 3539164<br>
+info score cp 177 pv d5e5 d5e6 e5d4<br>
+info depth 4 move_no 1 time (microsec) 8014 nodes 26278 nps 3278608<br>
+info score cp 181 pv d5e5 g1g2 b5c4 d5e4<br>
+info depth 5 move_no 1 time (microsec) 33511 nodes 132962 nps 3967689<br>
+info score cp 177 pv d5e5 g1g2 b5c4 d5e6 e5e4<br>
+info depth 5 move_no 14 time (microsec) 58554 nodes 228021 nps 3894161<br>
+info score cp 184 pv c7b7 g1g2 d5c6 e5e4 a7a6<br>
+info depth 5 move_no 22 time (microsec) 72988 nodes 282815 nps 3874790<br>
+info score cp 185 pv b5b6 g1g2 d5e4 e5e4 a7a6<br>
+info depth 6 move_no 1 time (microsec) 123115 nodes 478098 nps 3883336<br>
+info score cp 180 pv b5b6 g1g2 d5e4 e5e4 e5d4 e4d4<br>
+info depth 7 move_no 1 time (microsec) 548217 nodes 2175147 nps 3967668<br>
+info score cp 184 pv b5b6 f1g1 b6a5 f7R e1L f7f6 a5b5 e5d4<br>
+bestmove b5b6<br>
+info depth 1 move_no 1 time (microsec) 25 nodes 54 nps 2145838<br>
+info score cp 28 pv a7R<br>
+info depth 1 move_no 2 time (microsec) 53 nodes 108 nps 2025924<br>
+info score cp 180 pv c7R<br>
+info depth 1 move_no 3 time (microsec) 67 nodes 162 nps 2392945<br>
+info score cp 192 pv a7a6<br>
+info depth 2 move_no 1 time (microsec) 243 nodes 604 nps 2480584<br>
+info score cp 189 pv a7a6 f7g7<br>
+info depth 3 move_no 1 time (microsec) 1083 nodes 4485 nps 4140566<br>
+info score cp 205 pv a7a6 f7g7 c7d6<br>
+info depth 4 move_no 1 time (microsec) 2682 nodes 10763 nps 4012888<br>
+info score cp 158 pv a7a6 f7R c7d6 f7g7<br>
+info depth 4 move_no 2 time (microsec) 5843 nodes 20586 nps 3522598<br>
+info score cp 177 pv c7R f7g7 c7U f1R<br>
+info depth 4 move_no 5 time (microsec) 8830 nodes 30692 nps 3475693<br>
+info score cp 180 pv d5d4 e5f6 c7d6 f7g7<br>
+info depth 5 move_no 1 time (microsec) 33092 nodes 130147 nps 3932883<br>
+info score cp 182 pv d5d4 f7R b3c3 f7f6 b6c5<br>
+info depth 5 move_no 19 time (microsec) 52990 nodes 206376 nps 3894584<br>
+info score cp 184 pv d5e4 f7g7 c7d7 e5d4 a7a6<br>
+info depth 6 move_no 1 time (microsec) 155723 nodes 618112 nps 3969294<br>
+info score cp 178 pv d5e4 e1d2 e4U e5f4 c7d6 g1g2<br>
+info depth 6 move_no 2 time (microsec) 278846 nodes 1102512 nps 3953830<br>
+info score cp 179 pv d5d4 e5f5 b6b5 f7g7 b3c3 f1e2<br>
+bestmove d5d4<br>
+info depth 1 move_no 1 time (microsec) 21 nodes 32 nps 1465939<br>
+info score cp -31999 pv b6a5 g1f2<br>
+info depth 1 move_no 2 time (microsec) 52 nodes 86 nps 1651146<br>
+info score cp 29 pv a7U<br>
+info depth 1 move_no 4 time (microsec) 75 nodes 171 nps 2260528<br>
+info score cp 116 pv a0b0<br>
+info depth 1 move_no 7 time (microsec) 95 nodes 228 nps 2381922<br>
+info score cp 181 pv b3R<br>
+info depth 1 move_no 8 time (microsec) 111 nodes 282 nps 2531190<br>
+info score cp 182 pv b3c4<br>
+info depth 1 move_no 14 time (microsec) 140 nodes 341 nps 2422322<br>
+info score cp 193 pv a7a6<br>
+info depth 2 move_no 1 time (microsec) 285 nodes 663 nps 2320729<br>
+info score cp 170 pv a7a6 f7g6<br>
+info depth 2 move_no 12 time (microsec) 487 nodes 1241 nps 2546889<br>
+info score cp 179 pv c7R f7g7<br>
+info depth 3 move_no 1 time (microsec) 1114 nodes 4054 nps 3639115<br>
+info score cp 173 pv c7R f7g7 c7U<br>
+info depth 3 move_no 2 time (microsec) 1704 nodes 6574 nps 3856833<br>
+info score cp 184 pv a7a6 f7g7 c7b7<br>
+info depth 4 move_no 1 time (microsec) 3583 nodes 10961 nps 3058926<br>
+info score cp 159 pv a7a6 f7g7 c7d6 g7R<br>
+info depth 4 move_no 2 time (microsec) 5544 nodes 15378 nps 2773444<br>
+info score cp 177 pv c7R f7g7 c7U f5e4<br>
+info depth 4 move_no 13 time (microsec) 8988 nodes 25769 nps 2866946<br>
+info score cp 178 pv c7L f7g7 c7d7 f1e2<br>
+info depth 4 move_no 17 time (microsec) 9594 nodes 27423 nps 2858162<br>
+info score cp 179 pv b6b5 f7g7 b3c3 f1e2<br>
+info depth 5 move_no 1 time (microsec) 28882 nodes 108697 nps 3763475<br>
+info score cp 174 pv b6b5 f7g7 b3c3 f1e2 c3d3<br>
+info depth 5 move_no 2 time (microsec) 46184 nodes 183307 nps 3969018<br>
+info score cp 182 pv c7L f7g7 c7d7 g7g6 b3c3<br>
+info depth 6 move_no 1 time (microsec) 125722 nodes 487688 nps 3879092<br>
+info score cp 170 pv c7L f7g7 d4e3 e1f2 b3c3 g1g2<br>
+info depth 6 move_no 2 time (microsec) 172360 nodes 658993 nps 3823351<br>
+info score cp 175 pv b6b5 f7g7 d4e3 e1e2 e3e2 f5e4<br>
+info depth 6 move_no 37 time (microsec) 421450 nodes 1639799 nps 3890847<br>
+info score cp 177 pv c7d7 f7g7 d4d3 f1f2 d7e7 f5e4<br>
+bestmove c7d7<br>
+info depth 1 move_no 1 time (microsec) 25 nodes 54 nps 2115325<br>
+info score cp -31999 pv b3a4 f5g4<br>
+info depth 1 move_no 3 time (microsec) 62 nodes 114 nps 1834331<br>
+info score cp -26 pv a0U<br>
+info depth 1 move_no 4 time (microsec) 78 nodes 168 nps 2148145<br>
+info score cp 181 pv b6R<br>
+info depth 1 move_no 29 time (microsec) 123 nodes 254 nps 2050851<br>
+info score cp 193 pv a7a6<br>
+info depth 2 move_no 1 time (microsec) 397 nodes 1347 nps 3388713<br>
+info score cp 169 pv a7a6 f7g6<br>
+info depth 2 move_no 12 time (microsec) 670 nodes 2144 nps 3199298<br>
+info score cp 178 pv d4L g1g2<br>
+info depth 3 move_no 1 time (microsec) 2438 nodes 9280 nps 3805290<br>
+info score cp 181 pv d4L f7f6 b6c5<br>
+info depth 3 move_no 2 time (microsec) 3052 nodes 11759 nps 3852475<br>
+info score cp 184 pv a7a6 f7g6 d7e6<br>
+info depth 4 move_no 1 time (microsec) 8829 nodes 28919 nps 3275142<br>
+info score cp 169 pv a7a6 f7g7 d4U g7g6<br>
+info depth 4 move_no 2 time (microsec) 12979 nodes 42288 nps 3257995<br>
+info score cp 177 pv d4L f7g7 d7e7 f5e4<br>
+info depth 5 move_no 1 time (microsec) 49558 nodes 192759 nps 3889523<br>
+info score cp 181 pv d4L f7g7 d7e7 g7f6 b6c5<br>
+info depth 5 move_no 2 time (microsec) 66583 nodes 265237 nps 3983524<br>
+info score cp 184 pv a7a6 f7g7 d4U g7g6 d7e6<br>
+info depth 6 move_no 1 time (microsec) 114254 nodes 445508 nps 3899247<br>
+info score cp 169 pv a7a6 f7g7 d4U e1L d7e7 g7g6<br>
+info depth 6 move_no 2 time (microsec) 182326 nodes 705985 nps 3872093<br>
+info score cp 170 pv d4L f7g7 d4d3 e1L b3c3 g1g2<br>
+info depth 6 move_no 26 time (microsec) 374600 nodes 1463946 nps 3908018<br>
+info score cp 176 pv d4e3 f7g7 e3f2 f5f4 b6b5 e3e4<br>
+bestmove d4e3<br>
+info depth 1 move_no 1 time (microsec) 27 nodes 54 nps 1998003<br>
+info score cp 182 pv d7d6<br>
+info depth 1 move_no 49 time (microsec) 104 nodes 181 nps 1731610<br>
+info score cp 193 pv a7a6<br>
+info depth 2 move_no 1 time (microsec) 203 nodes 357 nps 1755688<br>
+info score cp 169 pv a7a6 f7g6<br>
+info depth 2 move_no 2 time (microsec) 423 nodes 1042 nps 2458416<br>
+info score cp 187 pv d7d6 f7g6<br>
+info depth 3 move_no 1 time (microsec) 1899 nodes 7339 nps 3863046<br>
+info score cp 184 pv d7d6 f7g6 a7a6<br>
+info depth 3 move_no 37 time (microsec) 3917 nodes 13320 nps 3399825<br>
+info score cp 190 pv e3f2 e3e4 a7a6<br>
+info depth 4 move_no 1 time (microsec) 19062 nodes 69472 nps 3644450<br>
+info score cp 177 pv e3f2 e3f3 f2f3 f7g7<br>
+info depth 4 move_no 2 time (microsec) 24148 nodes 86943 nps 3600374<br>
+info score cp 178 pv d7d6 f7R d6e7 g1g2<br>
+info depth 4 move_no 3 time (microsec) 27408 nodes 97940 nps 3573330<br>
+info score cp 181 pv a7a6 f7g6 d7d6 g1g2<br>
+info depth 5 move_no 1 time (microsec) 73465 nodes 282920 nps 3851056<br>
+info score cp 184 pv a7a6 f7g6 d7d6 f5e4 b3c2<br>
+info depth 6 move_no 1 time (microsec) 184115 nodes 703095 nps 3818768<br>
+info score cp 183 pv a7a6 f7R e3f2 f5f4 a6a7 f7f6<br>
+info depth 7 move_no 1 time (microsec) 437221 nodes 1641523 nps 3754446<br>
+info score cp 181 pv a7a6 f7g7 e3f2 f5f4 d7e7 g7g6 e7f6<br>
+info depth 7 move_no 3 time (microsec) 604323 nodes 2278256 nps 3769929<br>
+info score cp 183 pv e3f2 e3f3 a7a6 f7g7 d7e7 g7g6 e7f6<br>
+bestmove e3f2<br>
+info depth 1 move_no 1 time (microsec) 32 nodes 59 nps 1823237<br>
+info score cp 179 pv d7L<br>
+info depth 1 move_no 5 time (microsec) 68 nodes 118 nps 1724515<br>
+info score cp 180 pv b6b5<br>
+info depth 1 move_no 10 time (microsec) 94 nodes 181 nps 1923710<br>
+info score cp 191 pv a7a6<br>
+info depth 2 move_no 1 time (microsec) 235 nodes 500 nps 2120063<br>
+info score cp 168 pv a7a6 f7g6<br>
+info depth 2 move_no 2 time (microsec) 385 nodes 820 nps 2127284<br>
+info score cp 177 pv b6b5 f7g7<br>
+info depth 3 move_no 1 time (microsec) 2127 nodes 7932 nps 3727965<br>
+info score cp 172 pv b6b5 f7g7 f2f3<br>
+info depth 3 move_no 2 time (microsec) 2372 nodes 8674 nps 3655986<br>
+info score cp 183 pv a7a6 f7g6 d7d6<br>
+info depth 4 move_no 1 time (microsec) 5281 nodes 17711 nps 3353181<br>
+info score cp 168 pv a7a6 f7g7 d7e7 g7g6<br>
+info depth 4 move_no 2 time (microsec) 8829 nodes 28309 nps 3206164<br>
+info score cp 177 pv b6b5 f7g7 f2e3 f3e4<br>
+info depth 4 move_no 17 time (microsec) 26193 nodes 91688 nps 3500371<br>
+info score cp 178 pv f2U f3f2 f3e3 f7g7<br>
+info depth 5 move_no 1 time (microsec) 45300 nodes 156056 nps 3444906<br>
+info score cp 183 pv f2U f3f2 a7a6 f7g6 d7e6<br>
+info depth 6 move_no 1 time (microsec) 90398 nodes 315289 nps 3487758<br>
+info score cp 178 pv f2U f3f2 f3e3 f7g7 d7c7 e1R<br>
+info depth 6 move_no 24 time (microsec) 197857 nodes 697250 nps 3524009<br>
+info score cp 341 pv f2f1 e1f1 e1U f7f6 e1f1 e1e0 e0L<br>
+info depth 7 move_no 1 time (microsec) 226610 nodes 793010 nps 3499435<br>
+info score cp 359 pv f2f1 e1f1 e1U f7f6 e1f1 g1h1 b6a5 h1L a0R<br>
+info depth 8 move_no 1 time (microsec) 295778 nodes 1046188 nps 3537061<br>
+info score cp 31990 pv f2f1 e1f1 e1U g1U b6a5 g1h2 a5b6 h2h1 e1d0 h1L a0a1<br>
+info depth 9 move_no 1 time (microsec) 404639 nodes 1451037 nps 3585998<br>
+info score cp 31992 pv f2f1 e1f1 e1U g1U b6a5 g1h2 f5g5 h2h1 g5h5<br>
+bestmove f2f1<br>
+info depth 1 move_no 1 time (microsec) 32 nodes 58 nps 1781490<br>
+info score cp 16 pv e1d0<br>
+info depth 1 move_no 2 time (microsec) 60 nodes 112 nps 1852923<br>
+info score cp 180 pv b3c3<br>
+info depth 1 move_no 54 time (microsec) 129 nodes 225 nps 1734558<br>
+info score cp 191 pv a7a6<br>
+info depth 2 move_no 1 time (microsec) 258 nodes 491 nps 1898641<br>
+info score cp 168 pv a7a6 f7g6<br>
+info depth 2 move_no 5 time (microsec) 559 nodes 1324 nps 2365603<br>
+info score cp 177 pv b6b5 f7g7<br>
+info depth 2 move_no 28 time (microsec) 787 nodes 2003 nps 2542539<br>
+info score cp 184 pv e1R f7e6<br>
+info depth 2 move_no 53 time (microsec) 1041 nodes 2889 nps 2774640<br>
+info score cp 336 pv e1U f5e6 e1d0<br>
+info depth 3 move_no 1 time (microsec) 1416 nodes 4210 nps 2972145<br>
+info score cp 341 pv e1U f5e6 e1d0 e6f5<br>
+info depth 4 move_no 1 time (microsec) 2984 nodes 10063 nps 3371592<br>
+info score cp 602 pv e1U g1U b6a5 g1h2 f5g5<br>
+info depth 5 move_no 1 time (microsec) 3555 nodes 11963 nps 3364179<br>
+info score cp 31994 pv e1U g1U b6a5 g1h2 f5g5 h2h1 g5h5<br>
+info depth 6 move_no 1 time (microsec) 4631 nodes 16045 nps 3464087<br>
+info score cp 31994 pv e1U g1U b6a5 g1h2 f5g5 h2h1 g5h5<br>
+info depth 7 move_no 1 time (microsec) 13224 nodes 48943 nps 3700872<br>
+info score cp 31994 pv e1U g1U b6a5 g1h2 f5g5 h2h1 g5h5<br>
+info depth 8 move_no 1 time (microsec) 54377 nodes 197133 nps 3625281<br>
+info score cp 31994 pv e1U g1U b6a5 g1h2 f5g5 h2h1 g5h5<br>
+info depth 9 move_no 1 time (microsec) 250904 nodes 965678 nps 3848783<br>
+info score cp 31994 pv e1U g1U b6a5 g1h2 f5g5 h2h1 g5h5<br>
+bestmove e1U<br>
+info depth 1 move_no 1 time (microsec) 39 nodes 67 nps 1689912<br>
+info score cp 179 pv d7c6<br>
+info depth 2 move_no 1 time (microsec) 363 nodes 956 nps 2633260<br>
+info score cp 177 pv d7c6 f6g7<br>
+info depth 2 move_no 7 time (microsec) 509 nodes 1349 nps 2647465<br>
+info score cp 341 pv e1f1 e1e0 e0L<br>
+info depth 3 move_no 1 time (microsec) 1141 nodes 3824 nps 3351211<br>
+info score cp 470 pv e1f1 e1e0 e0L g1h1 a7b7<br>
+info depth 4 move_no 1 time (microsec) 2015 nodes 7077 nps 3511944<br>
+info score cp 31996 pv e1f1 e1e0 f1U g1f1 a0a1<br>
+info depth 5 move_no 1 time (microsec) 2717 nodes 9697 nps 3568714<br>
+info score cp 31996 pv e1f1 e1e0 f1U g1f1 a0a1<br>
+info depth 6 move_no 1 time (microsec) 4673 nodes 16947 nps 3625998<br>
+info score cp 31996 pv e1f1 e1e0 f1U g1f1 a0a1<br>
+info depth 7 move_no 1 time (microsec) 14866 nodes 53034 nps 3567417<br>
+info score cp 31996 pv e1f1 e1e0 f1U g1f1 a0a1<br>
+info depth 8 move_no 1 time (microsec) 53964 nodes 199886 nps 3704039<br>
+info score cp 31996 pv e1f1 e1e0 f1U g1f1 a0a1<br>
+info depth 9 move_no 1 time (microsec) 240828 nodes 946017 nps 3928169<br>
+info score cp 31996 pv e1f1 e1e0 f1U g1f1 a0a1<br>
+bestmove e1f1<br>
+info depth 1 move_no 1 time (microsec) 27 nodes 54 nps 1995565<br>
+info score cp 194 pv d7c6<br>
+info depth 1 move_no 6 time (microsec) 60 nodes 112 nps 1852679<br>
+info score cp 212 pv f1g0<br>
+info depth 1 move_no 8 time (microsec) 108 nodes 241 nps 2213202<br>
+info score cp 282 pv b6a7 h1L f3L<br>
+info depth 1 move_no 33 time (microsec) 181 nodes 398 nps 2190809<br>
+info score cp 365 pv b6a5 h1L<br>
+info depth 2 move_no 1 time (microsec) 267 nodes 571 nps 2135521<br>
+info score cp 359 pv b6a5 h1L a0b0<br>
+info depth 2 move_no 3 time (microsec) 412 nodes 968 nps 2349081<br>
+info score cp 31998 pv f1g0 e1f1 g0h1<br>
+info depth 3 move_no 1 time (microsec) 518 nodes 1128 nps 2174143<br>
+info score cp 31998 pv f1g0 e1f1 g0h1<br>
+info depth 4 move_no 1 time (microsec) 634 nodes 1344 nps 2116988<br>
+info score cp 31998 pv f1g0 e1f1 g0h1<br>
+info depth 5 move_no 1 time (microsec) 1994 nodes 6965 nps 3491889<br>
+info score cp 31998 pv f1g0 e1f1 g0h1<br>
+info depth 6 move_no 1 time (microsec) 7867 nodes 28390 nps 3608458<br>
+info score cp 31998 pv f1g0 e1f1 g0h1<br>
+info depth 7 move_no 1 time (microsec) 34148 nodes 134689 nps 3944193<br>
+info score cp 31998 pv f1g0 e1f1 g0h1<br>
+info depth 8 move_no 1 time (microsec) 141112 nodes 571292 nps 4048479<br>
+info score cp 31998 pv f1g0 e1f1 g0h1<br>
+info depth 9 move_no 1 time (microsec) 540366 nodes 2184789 nps 4043162<br>
+info score cp 31998 pv f1g0 e1f1 g0h1<br>
+bestmove f1g0<br>
+info depth 1 move_no 1 time (microsec) 26 nodes 54 nps 2054872<br>
+info score cp 213 pv d7d6<br>
+info depth 1 move_no 9 time (microsec) 58 nodes 93 nps 1600413<br>
+info score cp 341 pv b6a5<br>
+info depth 1 move_no 20 time (microsec) 70 nodes 104 nps 1469196<br>
+info score cp 32000 pv g0h1<br>
+info depth 2 move_no 1 time (microsec) 104 nodes 136 nps 1298502<br>
+info score cp 32000 pv g0h1<br>
+info depth 3 move_no 1 time (microsec) 156 nodes 187 nps 1193690<br>
+info score cp 32000 pv g0h1<br>
+info depth 4 move_no 1 time (microsec) 200 nodes 238 nps 1187073<br>
+info score cp 32000 pv g0h1<br>
+info depth 5 move_no 1 time (microsec) 901 nodes 2983 nps 3307524<br>
+info score cp 32000 pv g0h1<br>
+info depth 6 move_no 1 time (microsec) 3037 nodes 12280 nps 4042663<br>
+info score cp 32000 pv g0h1<br>
+info depth 7 move_no 1 time (microsec) 12567 nodes 49983 nps 3977307<br>
+info score cp 32000 pv g0h1<br>
+info depth 8 move_no 1 time (microsec) 50477 nodes 206983 nps 4100474<br>
+info score cp 32000 pv g0h1<br>
+info depth 9 move_no 1 time (microsec) 209300 nodes 872749 nps 4169842<br>
+info score cp 32000 pv g0h1<br>
+bestmove g0h1<br>
+</div>
+    </div>
+  </div>
+<img src="/static/images/fun.gif" style="display:none;" id="hit_img">
+
+</body></html>

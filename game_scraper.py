@@ -2,6 +2,7 @@ import dryscrape
 from bs4 import BeautifulSoup
 import os
 import sys
+import time
 
 game_id = 690214
 
@@ -11,6 +12,7 @@ print game_id
 
 session = dryscrape.Session()
 session.visit("http://scrimmage.csail.mit.edu/watch_game?gameid=" + str(game_id))
+time.sleep(0.1)
 response = session.body()
 response_uni = u''.join(response).encode('utf-8')
 

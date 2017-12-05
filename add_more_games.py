@@ -14,7 +14,7 @@ game_ids_have = sorted(game_ids_have)
 
 print game_ids_have
 
-MAX_NUM_NEW_GAMES = 10
+MAX_NUM_NEW_GAMES = 80
 
 next_game_id = str(int(game_ids_have[-1]) + 1)
 
