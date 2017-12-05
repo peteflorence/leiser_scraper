@@ -1,6 +1,11 @@
 import os
+import sys
 
 game_id = 690214
+
+if len(sys.argv) > 1:
+	game_id= sys.argv[1]
+print game_id
 
 filename = "game_data/"+str(game_id)+"/page.html"
 

@@ -22,5 +22,17 @@ for i in range(MAX_NUM_NEW_GAMES):
 	# scrape one more than the current highest game we have
 	time.sleep(1 + random.random()*0.1)
 	os.system("python " +os.getcwd()+"/game_scraper.py " + next_game_id)
-	next_game_id = str(int(next_game_id) + 1)
+
+	# try to parse move list
+	os.system("python " +os.getcwd()+"/parse_move_list.py " + next_game_id)
+
+	# if move list exists, go on to next game
+	if os.path.isfile(os.getcwd()+"/game_data/"+next_game_id+"/move_list.txt"):
+		next_game_id = str(int(next_game_id) + 1)	
+
+	# otherwise, try this game again
+
+
+
+	
 
