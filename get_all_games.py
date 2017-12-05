@@ -1,6 +1,8 @@
 import dryscrape
 from bs4 import BeautifulSoup
 import os
+import time
+import random
 
 # read in all games
 with open("all_games.txt") as f:
@@ -51,7 +53,9 @@ def find_games_between(low, high):
 	for i in range(low+1,high):
 		if is_a_game(i):
 			all_games.append(i)
-			return                   ## REMOVE
+			time.sleep(random.random()/10.0)                 
+		if (i - low) > 20:
+			return											## REMOVE
 
 print len(all_games), " is length before filling holes"
 
