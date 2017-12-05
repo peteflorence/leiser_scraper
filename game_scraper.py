@@ -1,8 +1,13 @@
 import dryscrape
 from bs4 import BeautifulSoup
 import os
+import sys
 
 game_id = 690214
+
+if len(sys.argv) > 1:
+	game_id= sys.argv[1]
+print game_id
 
 session = dryscrape.Session()
 session.visit("http://scrimmage.csail.mit.edu/watch_game?gameid=" + str(game_id))

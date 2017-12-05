@@ -4,79 +4,22 @@ import os
 import time
 import random
 
-# read in all games
+# read in list of games that currently have
 d = './game_data/'
 game_ids_have = [os.path.join(d, o) for o in os.listdir(d) 
                     if os.path.isdir(os.path.join(d,o))]
 
+game_ids_have = [o.split("game_data/")[1] for o in game_ids_have]
+game_ids_have = sorted(game_ids_have)
+
 print game_ids_have
-quit()
 
-# scrape currently listed games
-session = dryscrape.Session()
-session.visit("http://scrimmage.csail.mit.edu/")
-response = session.body()
-response_uni = u''.join(response).encode('utf-8') 
-content = response_uni.splitlines()
+MAX_NUM_NEW_GAMES = 20
 
+next_game_id = str(int(game_ids_have[-1]) + 1)
 
-for i,v in enumerate(content):
-	if 'gameid' in v:
-		split_after = v.split("gameid=")[1]
-		i_game = split_after.split("&")
-		if len(i_game) > 1:
-			new_game_id = int(i_game[0])
-			if new_game_id not in all_games:
-				print "found a new game!!"
-				print new_game_id
-				all_games.append(new_game_id)
-
-all_games = sorted(all_games)
-
-
-def is_a_game(game_id):
-	session = dryscrape.Session()
-	session.visit("http://scrimmage.csail.mit.edu/watch_game?gameid=" + str(game_id))
-	response = session.body()
-	response_uni = u''.join(response).encode('utf-8') 
-	content = response_uni.splitlines()
-	for i,v in enumerate(content):
-		if "<title>500 Internal Server Error</title>" in v:
-			print "NOT A GAME"
-			return False
-			quit()
-	print "yes a game"
-	return True
-
-# low, high are both already in all_games
-# but nothing in between currently is
-def find_games_between(low, high):
-	for i in range(low+1,high):
-		if is_a_game(i):
-			all_games.append(i)
-			time.sleep(random.random()/10.0)                 
-		if (i - low) > 20:
-			return											## REMOVE
-
-print len(all_games), " is length before filling holes"
-
-# search for if there are any missing holes
-prev_v = all_games[0]
-for i,v in enumerate(all_games):
-	if i == 0:
-		continue
-	if (v != prev_v + 1):
-		print "HOLE BETWEEN", prev_v, v
-		find_games_between(prev_v, v)
-		break						## REMOVE
-	prev_v = v
-
-print len(all_games), " is length after filling holes"
-
-all_games = sorted(all_games)
-
-text_file = open("all_games.txt", "w")
-for i in all_games:
-  text_file.write(str(i)+"\n")
-text_file.close()
+for i in range(MAX_NUM_NEW_GAMES):
+	# scrape one more than the current highest game we have
+	os.system("python " +os.getcwd()+"/game_scraper.py " + next_game_id)
+	next_game_id = str(int(next_game_id) + 1)
 
