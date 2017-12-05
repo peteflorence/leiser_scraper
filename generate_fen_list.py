@@ -1,11 +1,16 @@
 import os
 from time import sleep
 from subprocess import Popen, PIPE
+import sys
 
 # Kill any currently-running leiserchess binaries
 os.system("killall leiserchess")
 
 game_id = 690214
+if len(sys.argv) > 1:
+    game_id= sys.argv[1]
+print game_id
+
 move_list_filename = "game_data/"+str(game_id)+"/move_list.txt"
 
 fw = open("tmpout", "w")
