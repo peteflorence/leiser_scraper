@@ -2,25 +2,35 @@ import dryscrape
 from bs4 import BeautifulSoup
 import os
 
+# read in all games
+with open("all_games.txt") as f:
+	all_games = f.readlines()
+all_games = [int(x.strip()) for x in all_games] 
+all_games = sorted(all_games)
+
+
+# scrape currently listed games
 session = dryscrape.Session()
 session.visit("http://scrimmage.csail.mit.edu/")
 response = session.body()
 response_uni = u''.join(response).encode('utf-8') 
 content = response_uni.splitlines()
 
-all_games = []
 
 for i,v in enumerate(content):
 	if 'gameid' in v:
 		split_after = v.split("gameid=")[1]
 		i_game = split_after.split("&")
 		if len(i_game) > 1:
-			print i_game[0]
-			all_games.append(i_game[0])
+			new_game_id = int(i_game[0])
+			if new_game_id not in all_games:
+				print "found a new game!!"
+				print new_game_id
+				all_games.append(new_game_id)
 
 
 text_file = open("all_games.txt", "w")
 for i in all_games:
-	text_file.write(i + "\n")
+  text_file.write(str(i)+"\n")
 text_file.close()
 
