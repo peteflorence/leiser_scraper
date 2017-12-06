@@ -28,6 +28,12 @@ with open(move_list_filename) as f:
 move_list = [x.strip() for x in content] 
 print move_list
 
+p.stdin.write("printfen\n")
+sleep(0.05)
+fen = fr.readlines()[0]
+print "out", fen
+book.write(fen)
+
 # make all the moves
 for i in move_list:
     print i
