@@ -25,20 +25,23 @@ for i in game_ids_have:
 	# if fen list already exists, go on to next game
 	if not os.path.isfile(os.getcwd()+"/game_data/"+i+"/fen_list.txt"):
 		print "don't have fen list for " + i
-		quit()
+		continue
 	if not os.path.isfile(os.getcwd()+"/game_data/"+i+"/move_list.txt"):
 		print "don't have move list for " + i
-		quit()
+		continue
 
 	# find num line in move list
-	num_fens = file_len(os.getcwd()+"/game_data/"+i+"/fen_list.txt")
+	fen_file = os.getcwd()+"/game_data/"+i+"/fen_list.txt"
+	num_fens = file_len(fen_file)
 
 	# find num lines in fen list
-	num_moves = file_len(os.getcwd()+"/game_data/"+i+"/move_list.txt")
+	move_file = os.getcwd()+"/game_data/"+i+"/move_list.txt"
+	num_moves = file_len(move_file)
 
 	if num_moves != (num_fens-1):
 		print "not equal! moves, fens:", num_moves, num_fens
 		print i
+		os.system("rm " + fen_file)
 
 	#time.sleep(0.1)
 	#os.system("python " +os.getcwd()+"/generate_fen_list.py " + i)
