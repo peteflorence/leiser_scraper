@@ -14,11 +14,17 @@ game_ids_have = sorted(game_ids_have)
 
 print game_ids_have
 
-MAX_NUM_NEW_GAMES = 200
+MAX_NUM_NEW_GAMES = 490
 
 next_game_id = str(int(game_ids_have[-1]) + 1)
 
+retries = 0
+
 for i in range(MAX_NUM_NEW_GAMES):
+	if retries > 2:
+		retries = 0
+		next_game_id = str(int(next_game_id) + 1)
+
 	# scrape one more than the current highest game we have
 	time.sleep(1 + random.random()*0.1)
 	os.system("python " +os.getcwd()+"/game_scraper.py " + next_game_id)
@@ -28,8 +34,9 @@ for i in range(MAX_NUM_NEW_GAMES):
 
 	# if move list exists, go on to next game
 	if os.path.isfile(os.getcwd()+"/game_data/"+next_game_id+"/move_list.txt"):
-		next_game_id = str(int(next_game_id) + 1)	
+		next_game_id = str(int(next_game_id) + 1)
 
+	retries += 1
 	# otherwise, try this game again
 
 
