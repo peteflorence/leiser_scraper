@@ -17,7 +17,6 @@ for i in game_ids_have:
 	if os.path.isfile(os.getcwd()+"/game_data/"+i+"/fen_list.txt"):
 		continue
 
-	time.sleep(0.1)
 	os.system("python " +os.getcwd()+"/generate_fen_list.py " + i)
 
 
