@@ -33,7 +33,7 @@ for i in game_ids_have:
     
     # if fen list already exists, go on to next game
     if not os.path.isfile(fen_list_filename):
-        print "don't have fen_list for ", i
+        #print "don't have fen_list for ", i
         continue
     
     with open(fen_list_filename) as f:
@@ -47,9 +47,27 @@ for i in game_ids_have:
 most_frequent_filename = "most_frequent_fens.txt"
 text_file = open(most_frequent_filename, "w")
 
+fen_counts_x = []
+fen_counts_y = []
+
+i = 0
 for key, value in sorted(fen_counts.iteritems(), key=lambda (k,v): (-v,k)):
+    if (value > 1):
+        fen_counts_x.append(i)
+        fen_counts_y.append(value)
+    i+=1
     if value > 1:
         print "%s: %s" % (key, value)
         text_file.write(str(key)+"\n")
 
 text_file.close()
+
+print len(fen_counts), "total number of different fens"
+import matplotlib.pyplot as plt
+
+plt.plot(fen_counts_x, fen_counts_y)
+plt.axis([0,2000,0,110])
+plt.title("Distribution of most frequent board states, N=11,588 games")
+plt.ylabel("# occurences of board state")
+plt.xlabel("unique board positions (sorted by most frequent)")
+plt.show()

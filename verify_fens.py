@@ -24,10 +24,10 @@ def file_len(fname):
 for i in game_ids_have:
 	# if fen list already exists, go on to next game
 	if not os.path.isfile(os.getcwd()+"/game_data/"+i+"/fen_list.txt"):
-		print "don't have fen list for " + i
+		#print "don't have fen list for " + i
 		continue
 	if not os.path.isfile(os.getcwd()+"/game_data/"+i+"/move_list.txt"):
-		print "don't have move list for " + i
+		#print "don't have move list for " + i
 		continue
 
 	# find num line in move list
