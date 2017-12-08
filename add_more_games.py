@@ -4,6 +4,9 @@ import os
 import time
 import random
 
+# currently update this manually
+highest_known_game_id = 754799
+
 # read in list of games that currently have
 d = './game_data/'
 game_ids_have = [os.path.join(d, o) for o in os.listdir(d) 
@@ -14,19 +17,23 @@ game_ids_have = sorted(game_ids_have)
 
 print game_ids_have
 
-MAX_NUM_NEW_GAMES = 490
+MAX_NUM_NEW_GAMES = 10000
 
-next_game_id = str(int(game_ids_have[-1]) + 1)
+next_game_id = str(highest_known_game_id)
 
 retries = 0
 
 for i in range(MAX_NUM_NEW_GAMES):
+	if os.path.isdir("./game_data/"+next_game_id):
+		print "already have " + next_game_id
+		next_game_id = str(int(next_game_id) - 1)
+		continue
 	if retries > 2:
 		retries = 0
-		next_game_id = str(int(next_game_id) + 1)
+		next_game_id = str(int(next_game_id) - 1)
 
 	# scrape one more than the current highest game we have
-	time.sleep(1 + random.random()*0.1)
+	time.sleep(0.05 + random.random()*0.1)
 	os.system("python " +os.getcwd()+"/game_scraper.py " + next_game_id)
 
 	# try to parse move list
@@ -34,7 +41,7 @@ for i in range(MAX_NUM_NEW_GAMES):
 
 	# if move list exists, go on to next game
 	if os.path.isfile(os.getcwd()+"/game_data/"+next_game_id+"/move_list.txt"):
-		next_game_id = str(int(next_game_id) + 1)
+		next_game_id = str(int(next_game_id) - 1)
 
 	retries += 1
 	# otherwise, try this game again
