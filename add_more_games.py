@@ -5,7 +5,8 @@ import time
 import random
 
 # currently update this manually
-highest_known_game_id = 754817
+#highest_known_game_id = 754817
+highest_known_game_id = 740775 # many of the games in the couple thousand above this range have no moves?
 
 # read in list of games that currently have
 d = './game_data/'
@@ -17,7 +18,7 @@ game_ids_have = sorted(game_ids_have)
 
 print game_ids_have
 
-MAX_NUM_NEW_GAMES = 20000
+MAX_NUM_NEW_GAMES = 50000
 
 next_game_id = str(highest_known_game_id)
 

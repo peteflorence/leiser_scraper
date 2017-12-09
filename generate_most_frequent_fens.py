@@ -49,25 +49,49 @@ text_file = open(most_frequent_filename, "w")
 
 fen_counts_x = []
 fen_counts_y = []
+cum_fen_counts_y = []
 
+unique_two_or_more = 0
+num_two_or_more = 0
+num_total = 0
 i = 0
 for key, value in sorted(fen_counts.iteritems(), key=lambda (k,v): (-v,k)):
+    i+=1
+    num_total += value
     if (value > 1):
+        unique_two_or_more += 1
+        num_two_or_more += value
         fen_counts_x.append(i)
         fen_counts_y.append(value)
-    i+=1
+        cum_fen_counts_y.append(num_total)
     if value > 1:
         print "%s: %s" % (key, value)
-        text_file.write(str(key)+"\n")
+        text_file.write(str(key)+","+str(value)+"\n")
+
+for i,v in enumerate(cum_fen_counts_y):
+    cum_fen_counts_y[i] = v*1.0 / num_total
 
 text_file.close()
 
 print len(fen_counts), "total number of different fens"
+print unique_two_or_more, "of these have been seen twice or more times"
+print "that is", unique_two_or_more*1.0/len(fen_counts), "percent"
+print "---"
+print num_total, "is the total number of instances of fens"
+print num_two_or_more, "is the number of instances for two or more"
+print "that is", num_two_or_more*1.0/num_total, "percent"
+print  ""
 import matplotlib.pyplot as plt
 
 plt.plot(fen_counts_x, fen_counts_y)
 plt.axis([0,2000,0,110])
-plt.title("Distribution of most frequent board states, N=11,588 games")
+plt.title("Distribution of most frequent board states, N="+str(len(game_ids_have))+" games")
 plt.ylabel("# occurences of board state")
+plt.xlabel("unique board positions (sorted by most frequent)")
+plt.show()
+
+plt.plot(fen_counts_x, cum_fen_counts_y)
+plt.title("Cdf of most frequent board states, N="+str(len(game_ids_have))+" games")
+plt.ylabel("fraction of all board state instances")
 plt.xlabel("unique board positions (sorted by most frequent)")
 plt.show()
