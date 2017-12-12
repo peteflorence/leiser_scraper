@@ -10,6 +10,31 @@ game_ids_have = [os.path.join(d, o) for o in os.listdir(d)
 game_ids_have = [o.split("game_data/")[1] for o in game_ids_have]
 game_ids_have = sorted(game_ids_have)
 
+# filter by only good players!
+
+list_of_good_players = ['dbausher-mengjiao-peteflo', 'reference_tas', 'reference_plus', 'akkas-endrias-itinawi-obeya', 'jakobw-stefren-vxia-yangk', 'ajayjain-igliu-jkearl-shreyask', 'akshat-alisao-jinglin-phuvp', 'insinger-sunphil-umaroy']
+print list_of_good_players
+list_of_games_with_good_players = []
+
+def game_contains_player(game_id, list_of_good_players):
+    with open(os.getcwd()+"/game_data/"+game_id+"/page.html") as f:
+        content = f.readlines()
+    content = [x.strip() for x in content] 
+    for i,v in enumerate(content):
+        if "vs" in v:
+            for player in list_of_good_players:
+                if player in v:
+                    print v
+                    return True
+    return False
+
+for game in game_ids_have:
+    if game_contains_player(game, list_of_good_players):
+        list_of_games_with_good_players.append(game)
+
+print list_of_games_with_good_players
+
+quit()
 print game_ids_have
 print len(game_ids_have)
 
