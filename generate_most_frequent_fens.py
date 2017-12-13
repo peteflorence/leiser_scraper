@@ -12,7 +12,7 @@ game_ids_have = sorted(game_ids_have)
 
 # filter by only good players!
 
-list_of_good_players = ['dbausher-mengjiao-peteflo', 'reference_tas', 'reference_plus', 'akkas-endrias-itinawi-obeya', 'jakobw-stefren-vxia-yangk', 'ajayjain-igliu-jkearl-shreyask', 'akshat-alisao-jinglin-phuvp', 'insinger-sunphil-umaroy']
+list_of_good_players = ['dbausher', 'mengjiao', 'peteflo', 'reference_tas', 'reference_plus', 'akkas', 'endrias', 'itinawi', 'obeya', 'jakobw', 'stefren', 'vxia','yangk', 'ajayjain', 'igliu', 'jkearl','shreyask', 'akshat','alisao','jinglin','phuvp', 'insinger','sunphil','umaroy']
 print list_of_good_players
 list_of_games_with_good_players = []
 
